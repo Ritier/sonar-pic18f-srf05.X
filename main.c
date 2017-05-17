@@ -8,6 +8,15 @@
 
 #include <xc.h>
 
+void initialisationHardware() {
+    
+    
+}
+
+
+
 void main(void) {
+    
+    
     return;
 }
