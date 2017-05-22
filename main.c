@@ -55,9 +55,34 @@ void initialisationHardware(){
     CCPTMRS1bits.C5TSEL = 0; // CCP5 branché sur tmr1
     PIE4bits.CCP5IE = 1;     // Active les interruptions...
     IPR4bits.CCP5IP = 0;     // ... de basse priorité.
+    
+    // Configure le timer0 pour obtenir 150 interruptions par seconde,
+    // en assumant que le microprocesseur est cadencé à 1MHz
+    T0CONbits.TMR0ON = 1;  // Active le timer 0.
+    T0CONbits.T08BIT = 0;  // 16 bits pour compter jusqu'à 3125.
+    
+    T0CONbits.T0CS = 0;    // On utilise Fosc/4 comme source.
+    T0CONbits.PSA = 1;     // Pas de diviseur de fréquence.
+    
+    // Configure les interruptions
+    RCONbits.IPEN = 1;      // Active le mode Haute / Basse priorité.
+    INTCONbits.GIEH = 1;    // Active les interr. haute priorité.
+    INTCONbits.GIEL = 1;    // Active les interr. basse priorité.
+    
+    INTCONbits.TMR0IE = 1;  // Active les interr. timer0
+    PIE1bits.ADIE = 1;      // Active les interr. A/D
+    IPR1bits.ADIP = 1;      // Interr. A/D sont de haute priorité.
 
 }
 
+void interrupt interruptions()
+{
+    if (INTCONbits.TMR0IF) {
+        
+        // Baisse le drapeau d'interruption pour la prochaine fois.
+        INTCONbits.TMR0IF = 0;
+    }
+}
 
 
 void main(void) {
