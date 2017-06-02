@@ -1,6 +1,10 @@
 
 # 1 "main.c"
 
+# 7
+static int pulse = 0;
+static int temp = 0;
+
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
 
@@ -8065,7 +8069,7 @@ extern __nonreentrant void _delaywdt(unsigned long);
 extern __nonreentrant void _delay3(unsigned char);
 
 
-# 17 "main.c"
+# 18 "main.c"
 #pragma config FOSC = INTIO67
 #pragma config IESO = OFF
 #pragma config FCMEN = OFF
@@ -8081,61 +8085,110 @@ TRIGGER_ON,
 TRIGGER_OFF
 } Trigger;
 
-# 36
+Trigger trigger;
+
+unsigned int capture;
+unsigned int distance;
+
+void CompleteCapture(unsigned int instant);
+
 void initialisationHardware(){
 
-OSCCONbits.IRCF = 0b111;
-
-
+# 46
 ANSELA=0;
-ANSELB=0;
-
 TRISAbits.RA4=1;
+TRISAbits.RA3=0;
+TRISAbits.RA5=0;
 
 
-TRISBbits.RB2=0;
+RCONbits.IPEN = 1;
+INTCONbits.GIEH = 1;
+INTCONbits.GIEL = 1;
 
-
+# 60
 PIE1bits.TMR2IE = 1;
 IPR1bits.TMR2IP = 1;
 
-# 61
+
+T2CON |= 0;
 T2CONbits.TMR2ON = 1;
 T2CONbits.T2CKPS1 = 0;
 T2CONbits.T2CKPS0 = 0;
 PR2 = 1;
 
-# 81
+# 74
 CCP5CONbits.CCP5M = 0b101;
 CCPTMRS1bits.C5TSEL = 0;
 PIE4bits.CCP5IE = 1;
 IPR4bits.CCP5IP = 0;
 
-# 92
-RCONbits.IPEN = 1;
-INTCONbits.GIEH = 1;
-INTCONbits.GIEL = 1;
 
-INTCONbits.TMR0IE = 1;
-PIE1bits.ADIE = 1;
-IPR1bits.ADIP = 1;
 
+
+PIE1bits.TMR1IE = 1;
+IPR1bits.TMR1IP = 1;
+
+T1CONbits.TMR1ON = 1;
+T1CONbits.T1CKPS = 0b00;
+T1CONbits.TMR1CS = 0;
+T1CONbits.T1RD16 = 1;
+
+# 102
 }
 
 void interrupt interruptions()
 {
-if (INTCONbits.TMR0IF) {
 
-
-INTCONbits.TMR0IF = 0;
-}
-
+# 112
 if (PIR1bits.TMR2IF) {
-
+switch (trigger){
+case TRIGGER_ON:
+PR2 = 255;
+PORTAbits.RA5 = 0;
+temp ++;
+if (temp < 50){
+temp ++;
+} else {
+trigger = TRIGGER_OFF;
+temp = 0;
+}
+break;
+case TRIGGER_OFF:
+PR2 = 3;
+PORTAbits.RA5 = 1;
+trigger = TRIGGER_ON;
+break;
+}
 PIR1bits.TMR2IF = 0;
 }
+
+if (PIR1bits.TMR1IF) {
+int val;
+val=0;
 }
 
+if (PIR4bits.CCP5IF) {
+if (PORTAbits.RA4) {
+capture = CCPR1;
+CCP5CONbits.CCP5M = 0b100;
+} else {
+CompleteCapture(CCPR5);
+CCP5CONbits.CCP5M = 0b101;
+}
+PIR4bits.CCP5IF = 0;
+}
+}
+
+# 156
+void CompleteCapture(unsigned int instant) {
+if (instant >= capture){
+capture = (instant - capture);
+} else {
+capture = (65536 - capture);
+capture = (instant + capture);
+}
+distance = capture;
+}
 
 void main(void) {
 
