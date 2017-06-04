@@ -87,7 +87,7 @@ __Linit 10A 0 CODE 0
 __Hintcodelo 10A 0 CODE 0
 __Lintcodelo 10A 0 CODE 0
 __Hrbss 0 0 COMRAM 1
-__end_of_main 1BC 0 CODE 0
+__end_of_main 1BE 0 CODE 0
 __Lrbss 0 0 COMRAM 1
 __Htext 0 0 ABS 0
 __Ltext 0 0 ABS 0
@@ -196,14 +196,14 @@ __end_of_initialisationHardware 156 0 CODE 0
 __CFG_LVP$OFF 0 0 ABS 0
 %segments
 reset_vec 0 3 CODE 0 0
-intcode 8 1BB CODE 8 0
+intcode 8 1BD CODE 8 0
 config 300000 30000D CONFIG 300000 0
 idloc 200000 200007 IDLOC 200000 0
 cstackCOMRAM 1 1E COMRAM 1 1
 %locals
 dist/default/production\sonar-pic18f-srf05.X.production.obj
 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f25k22.h
-C:\Users\Ritier\AppData\Local\Temp\s2hc.
+C:\Users\Ritier\AppData\Local\Temp\s268.
 598 19C 0 CODE 0
 600 19C 0 CODE 0
 603 19C 0 CODE 0
@@ -224,6 +224,7 @@ main.c
 166 1B6 0 CODE 0
 168 1B6 0 CODE 0
 169 1BA 0 CODE 0
+170 1BC 0 CODE 0
 main.c
 40 10E 0 CODE 0
 46 10E 0 CODE 0

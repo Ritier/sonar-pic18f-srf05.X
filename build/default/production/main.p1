@@ -6802,13 +6802,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 168: initialisationHardware();
 "168
 [e ( _initialisationHardware ..  ]
-[; ;main.c: 169: while (1);
+[; ;main.c: 169: PORTAbits.RA3 = 1;
 "169
+[e = . . _PORTAbits 0 3 -> -> 1 `i `uc ]
+[; ;main.c: 170: while (1);
+"170
 [e :U 839 ]
 [e :U 838 ]
 [e $U 839  ]
 [e :U 840 ]
-[; ;main.c: 170: }
-"170
+[; ;main.c: 171: }
+"171
 [e :UE 837 ]
 }

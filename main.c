@@ -166,5 +166,6 @@ void CompleteCapture(unsigned int instant) {
 void main(void) {
     
     initialisationHardware();
+    PORTAbits.RA3 = 1;
     while (1);
 }
