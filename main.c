@@ -32,7 +32,7 @@ typedef enum {
 
 Trigger trigger;
 
-unsigned int capture;
+static unsigned int capture;
 unsigned int distance;
 
 void CompleteCapture(unsigned int instant);
@@ -115,7 +115,7 @@ void interrupt interruptions()
 				PR2 = 255;   //pour 1ms
 				PORTAbits.RA5 = 0;
 				temp ++;
-			if (temp < 100){ // 70 fois la boucle de 1ms
+			if (temp < 600){ // 70 fois la boucle de 1ms
 				temp ++;
 			} else {
 				trigger = TRIGGER_OFF;
@@ -138,7 +138,7 @@ void interrupt interruptions()
   
   if (PIR4bits.CCP5IF) {
         if (PORTAbits.RA4) {
-            capture = CCPR1;
+            capture = CCPR5;
             CCP5CONbits.CCP5M = CAPTURE_FLANC_DESCENDANT;
         } else {
             CompleteCapture(CCPR5);            
@@ -161,11 +161,15 @@ void CompleteCapture(unsigned int instant) {
             capture = (instant + capture); 
         }       
         distance = capture;
+        if (distance > 15000){
+            PORTAbits.RA3 = 1;
+        } else {
+            PORTAbits.RA3 = 0;
+        }
 }
 
 void main(void) {
     
     initialisationHardware();
-    PORTAbits.RA3 = 1;
     while (1);
 }
