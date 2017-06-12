@@ -3,16 +3,16 @@ Microchip MPLAB XC8 Compiler V1.41 ()
 Linker command line:
 
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v1.41\dat\en_msgs.txt -cs \
-  -h+dist/default/production\sonar-pic18f-srf05.X.production.sym \
-  --cmf=dist/default/production\sonar-pic18f-srf05.X.production.cmf -z \
-  -Q18F25K22 -oC:\Users\Ritier\AppData\Local\Temp\s8hg.2 \
-  -Mdist/default/production/sonar-pic18f-srf05.X.production.map -E1 \
-  -ver=XC8 -ASTACK=060h-05ffh -pstack=STACK -ACODE=00h-07FFFh \
-  -ACONST=00h-07FFFh -ASMALLCONST=0600h-06FFhx122 \
-  -AMEDIUMCONST=0600h-07FFFh -ACOMRAM=01h-05Fh -AABS1=00h-05FFh \
-  -ABIGRAM=01h-05FFh -ARAM=060h-0FFh,0100h-01FFhx5 -ABANK0=060h-0FFh \
-  -ABANK1=0100h-01FFh -ABANK2=0200h-02FFh -ABANK3=0300h-03FFh \
-  -ABANK4=0400h-04FFh -ABANK5=0500h-05FFh -ASFR=0F38h-0F5Fh,0F60h-0FFFh \
+  -h+dist/default/debug\sonar-pic18f-srf05.X.debug.sym \
+  --cmf=dist/default/debug\sonar-pic18f-srf05.X.debug.cmf -z -Q18F25K22 \
+  -oC:\Users\Ritier\AppData\Local\Temp\s428.2 \
+  -Mdist/default/debug/sonar-pic18f-srf05.X.debug.map -E1 -ver=XC8 \
+  -ASTACK=060h-05ffh -pstack=STACK -ACODE=00h-07FFFh -ACONST=00h-07FFFh \
+  -ASMALLCONST=0600h-06FFhx122 -AMEDIUMCONST=0600h-07FFFh -ACOMRAM=01h-05Fh \
+  -AABS1=00h-05FFh -ABIGRAM=01h-05FFh -ARAM=060h-0FFh,0100h-01FFhx5 \
+  -ABANK0=060h-0FFh -ABANK1=0100h-01FFh -ABANK2=0200h-02FFh \
+  -ABANK3=0300h-03FFh -ABANK4=0400h-04FFh -ABANK5=0500h-05FFh \
+  -ASFR=0F38h-0F5Fh,0F60h-0FFCh \
   -preset_vec=00h,intcode=08h,intcodelo,powerup,init -pramtop=0600h \
   -psmallconst=SMALLCONST -pmediumconst=MEDIUMCONST -pconst=CONST \
   -AFARRAM=00h-00h -ACONFIG=0300000h-030000Dh -pconfig=CONFIG \
@@ -22,8 +22,8 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\Ritier\AppData\Local\Temp\s8hg.obj \
-  dist/default/production\sonar-pic18f-srf05.X.production.obj 
+  C:\Users\Ritier\AppData\Local\Temp\s428.obj \
+  dist/default/debug\sonar-pic18f-srf05.X.debug.obj 
 
 Object code version is 3.11
 
@@ -35,12 +35,12 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Ritier\AppData\Local\Temp\s8hg.obj
+C:\Users\Ritier\AppData\Local\Temp\s428.obj
                 init                                10A      10A        4        4       0
-                reset_vec                             0        0        4        0       0
+                reset_vec                             0        0        6        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
-dist/default/production\sonar-pic18f-srf05.X.production.obj
+dist/default/debug\sonar-pic18f-srf05.X.debug.obj
                 intcode                               8        8      102        4       0
                 temp                                 1E       1E        1        1       1
                 text3                               160      160       46        4       0
@@ -56,7 +56,7 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   CODE           
                 intcode                               8        8      102         0
                 init                                10A      10A        4         0
-                reset_vec                             0        0        4         0
+                reset_vec                             0        0        6         0
                 text3                               160      160       46         0
                 text1                               10E      10E       52         0
                 text0                               1C0      1C0        8         0
@@ -107,7 +107,7 @@ TOTAL           Name                               Link     Load   Length     Sp
 
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
 
-                reset_vec                      000000  000004  000004         0       0  CODE    
+                reset_vec                      000000  000006  000006         0       0  CODE    
                 cstackCOMRAM                   000001  00001E  00001F         1       1  COMRAM  
                 intcode                        000008  0001C0  0001C8         4       0  CODE    
                 idloc                          200000  000008  200008    200000       0  IDLOC   
@@ -124,15 +124,15 @@ UNUSED ADDRESS RANGES
         BANK4            000400-0004FF              100
         BANK5            000500-0005FF              100
         BIGRAM           00001F-0005FF              5E1
-        CODE             000004-000007                4
+        CODE             000006-000007                2
                          0001C8-007FFF             7E38
         COMRAM           00001F-00005F               41
-        CONST            000004-000007                4
+        CONST            000006-000007                2
                          0001C8-007FFF             7E38
         EEDATA           F00000-F000FF              100
         MEDIUMCONST      000600-007FFF             7A00
         RAM              000060-0005FF              100
-        SFR              000F38-000FFF               28
+        SFR              000F38-000FFC               28
         SMALLCONST       000600-007FFF              100
         STACK            000060-0005FF              5A0
 
@@ -212,7 +212,7 @@ __Hramtop                        ramtop       000600
 __Hrbit                          rbit         000000
 __Hrbss                          rbss         000000
 __Hrdata                         rdata        000000
-__Hreset_vec                     reset_vec    000004
+__Hreset_vec                     reset_vec    000006
 __Hrparam                        rparam       000000
 __Hsfr                           sfr          000000
 __Hsmallconst                    smallconst   000000

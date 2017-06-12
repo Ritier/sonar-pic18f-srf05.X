@@ -179,7 +179,7 @@ _OSCCONbits FD3 0 ABS 0
 _INTCONbits FF2 0 ABS 0
 __size_of_CompleteCapture 0 0 ABS 0
 __smallconst 0 0 SMALLCONST 0
-__Hreset_vec 4 0 CODE 0
+__Hreset_vec 6 0 CODE 0
 __Lreset_vec 0 0 CODE 0
 __accesstop 60 0 ABS 0
 __Hintcode_body 0 0 ABS 0
@@ -196,15 +196,15 @@ __activetblptr 2 0 ABS 0
 __end_of_initialisationHardware 160 0 CODE 0
 __CFG_LVP$OFF 0 0 ABS 0
 %segments
-reset_vec 0 3 CODE 0 0
+reset_vec 0 5 CODE 0 0
 intcode 8 1C7 CODE 8 0
 config 300000 30000D CONFIG 300000 0
 idloc 200000 200007 IDLOC 200000 0
 cstackCOMRAM 1 1E COMRAM 1 1
 %locals
-dist/default/production\sonar-pic18f-srf05.X.production.obj
+dist/default/debug\sonar-pic18f-srf05.X.debug.obj
 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f25k22.h
-C:\Users\Ritier\AppData\Local\Temp\s8hg.
+C:\Users\Ritier\AppData\Local\Temp\s428.
 600 1A6 0 CODE 0
 602 1A6 0 CODE 0
 605 1A6 0 CODE 0

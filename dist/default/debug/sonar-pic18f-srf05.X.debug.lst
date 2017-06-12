@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 LITE Macro Assembler V1.41 build -162212810 
-                                                                                               Mon Jun 12 19:09:42 2017
+                                                                                               Mon Jun 12 19:08:20 2017
 
 Microchip Technology Omniscient Code Generator v1.41 (Free mode) build 201701250102
      1                           	processor	18F25K22
@@ -881,20 +881,20 @@ Call Graph Tables:
 
  Address spaces:
 Name               Size   Autos  Total    Cost      Usage
-BIGRAM             5FF      0       0      16        0.0%
+BIGRAM             5FF      0       0      17        0.0%
 EEDATA             100      0       0       0        0.0%
-BITBANK5           100      0       0      14        0.0%
-BANK5              100      0       0      15        0.0%
-BITBANK4           100      0       0      12        0.0%
-BANK4              100      0       0      13        0.0%
-BITBANK3           100      0       0      10        0.0%
-BANK3              100      0       0      11        0.0%
-BITBANK2           100      0       0       7        0.0%
-BANK2              100      0       0       8        0.0%
-BITBANK1           100      0       0       5        0.0%
-BANK1              100      0       0       6        0.0%
-BITBANK0            A0      0       0       3        0.0%
-BANK0               A0      0       0       4        0.0%
+BITBANK5           100      0       0      15        0.0%
+BANK5              100      0       0      16        0.0%
+BITBANK4           100      0       0      13        0.0%
+BANK4              100      0       0      14        0.0%
+BITBANK3           100      0       0      11        0.0%
+BANK3              100      0       0      12        0.0%
+BITBANK2           100      0       0       9        0.0%
+BANK2              100      0       0      10        0.0%
+BITBANK1           100      0       0       7        0.0%
+BANK1              100      0       0       8        0.0%
+BITBANK0            A0      0       0       5        0.0%
+BANK0               A0      0       0       6        0.0%
 BITCOMRAM           5E      0       0       0        0.0%
 COMRAM              5E     14      1D       1       30.9%
 BITSFR_1             0      0       0     200        0.0%
@@ -903,13 +903,13 @@ BITSFR               0      0       0     200        0.0%
 SFR                  0      0       0     200        0.0%
 STACK                0      0       0       2        0.0%
 NULL                 0      0       0       0        0.0%
-ABS                  0      0      1D       9        0.0%
-DATA                 0      0      1D      17        0.0%
+ABS                  0      0      1D       3        0.0%
+DATA                 0      0      1D       4        0.0%
 CODE                 0      0       0       0        0.0%
 
 
 Microchip Technology PIC18 Macro Assembler V1.41 build -162212810 
-Symbol Table                                                                                   Mon Jun 12 19:09:42 2017
+Symbol Table                                                                                   Mon Jun 12 19:08:20 2017
 
                              l77 01C6            __end_of_interruptions 010A  
                             _PR2 000FBB                              wreg 000FE8  

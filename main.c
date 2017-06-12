@@ -39,8 +39,8 @@ void CompleteCapture(unsigned int instant);
 
 void initialisationHardware(){
     
-   //OSCCONbits.IRCF = 0b111;
-   //OSCCONbits.SCS = 11;
+   OSCCONbits.IRCF = 0b111;
+   OSCCONbits.SCS = 11;
 	
  // ANSELB=0;
 	ANSELA=0;
@@ -115,7 +115,7 @@ void interrupt interruptions()
 				PR2 = 255;   //pour 1ms
 				PORTAbits.RA5 = 0;
 				temp ++;
-			if (temp < 50){ // 50 fois la boucle de 1ms
+			if (temp < 100){ // 70 fois la boucle de 1ms
 				temp ++;
 			} else {
 				trigger = TRIGGER_OFF;
