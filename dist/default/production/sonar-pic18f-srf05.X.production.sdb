@@ -30,11 +30,11 @@ TRIGGER_OFF 1
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "40 C:\Users\Ritier\Documents\sonar-pic18f-srf05.X\main.c
 [v _initialisationHardware initialisationHardware `(v  1 e 1 0 ]
-"104
+"105
 [v _interruptions interruptions `II(v  1 e 1 0 ]
-"156
+"157
 [v _CompleteCapture CompleteCapture `(v  1 e 1 0 ]
-"166
+"177
 [v _main main `(v  1 e 1 0 ]
 "49 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f25k22.h
 [v _ANSELA ANSELA `VEuc  1 e 1 @3896 ]
@@ -235,8 +235,6 @@ TRIGGER_OFF 1
 [v _T2CONbits T2CONbits `VES286  1 e 1 @4026 ]
 "12352
 [v _PR2 PR2 `VEuc  1 e 1 @4027 ]
-"12471
-[v _CCPR1 CCPR1 `VEus  1 e 2 @4030 ]
 [s S374 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_T1SYNC 1 0 :1:2 
 ]
@@ -341,29 +339,29 @@ TRIGGER_OFF 1
 "33
 [v _trigger trigger `E6625  1 e 1 0 ]
 "35
-[v _capture capture `ui  1 e 2 0 ]
+[v _capture capture `ui  1 s 2 capture ]
 "36
 [v _distance distance `ui  1 e 2 0 ]
-"166
+"177
 [v _main main `(v  1 e 1 0 ]
 {
-"171
+"181
 } 0
 "40
 [v _initialisationHardware initialisationHardware `(v  1 e 1 0 ]
 {
-"102
+"103
 } 0
-"104
+"105
 [v _interruptions interruptions `II(v  1 e 1 0 ]
 {
-"135
+"136
 [v interruptions@val val `i  1 a 2 18 ]
-"149
+"150
 } 0
-"156
+"157
 [v _CompleteCapture CompleteCapture `(v  1 e 1 0 ]
 {
 [v CompleteCapture@instant instant `ui  1 p 2 0 ]
-"164
+"175
 } 0

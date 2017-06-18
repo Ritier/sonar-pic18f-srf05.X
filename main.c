@@ -45,6 +45,7 @@ void initialisationHardware(){
  // ANSELB=0;
 	ANSELA=0;
     TRISAbits.RA4=1;   //Configure RA4 comme entrée 
+    TRISAbits.RA2=0;   //Configure RA3 comme sortie 
 	TRISAbits.RA3=0;   //Configure RA3 comme sortie 
     TRISAbits.RA5=0;   //Configure RA5 comme sortie
     
@@ -163,8 +164,13 @@ void CompleteCapture(unsigned int instant) {
         distance = capture;
         if (distance > 15000){
             PORTAbits.RA3 = 1;
+            PORTAbits.RA2 = 1;
+        } else if (distance > 5000){
+            PORTAbits.RA3 = 1;
+            PORTAbits.RA2 = 0;
         } else {
             PORTAbits.RA3 = 0;
+            PORTAbits.RA2 = 0;
         }
 }
 
