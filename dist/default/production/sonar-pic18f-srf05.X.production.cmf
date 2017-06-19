@@ -11,6 +11,11 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
+$C:\Users\Ritier\AppData\Local\Temp\seqg.obj
+idloc IDLOC 0 200000 200000 8 1
+init CODE 0 10A 10A 4 1
+reset_vec CODE 0 0 0 4 1
+config CONFIG 0 300000 300000 E 1
 $dist/default/production\sonar-pic18f-srf05.X.production.obj
 cinit CODE 0 1D0 1D0 1A 1
 text0 CODE 0 1EA 1EA 6 1
@@ -20,11 +25,6 @@ cstackCOMRAM COMRAM 1 1 1 14 1
 temp COMRAM 1 1E 1E 1 1
 intcode CODE 0 8 8 102 1
 bssCOMRAM COMRAM 1 15 15 9 1
-$C:\Users\Ritier\AppData\Local\Temp\s5i8.obj
-idloc IDLOC 0 200000 200000 8 1
-init CODE 0 10A 10A 4 1
-reset_vec CODE 0 0 0 4 1
-config CONFIG 0 300000 300000 E 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
 # is described on a single line as follows:
@@ -142,22 +142,22 @@ CE intcode CODE >150:C:\Users\Ritier\Documents\sonar-pic18f-srf05.X\main.c
 1EA text0 CODE >177:C:\Users\Ritier\Documents\sonar-pic18f-srf05.X\main.c
 1EA text0 CODE >179:C:\Users\Ritier\Documents\sonar-pic18f-srf05.X\main.c
 1EE text0 CODE >180:C:\Users\Ritier\Documents\sonar-pic18f-srf05.X\main.c
-1D0 cinit CODE >598:C:\Users\Ritier\AppData\Local\Temp\s5i8.
-1D0 cinit CODE >600:C:\Users\Ritier\AppData\Local\Temp\s5i8.
-1D0 cinit CODE >603:C:\Users\Ritier\AppData\Local\Temp\s5i8.
-1D0 cinit CODE >624:C:\Users\Ritier\AppData\Local\Temp\s5i8.
-1D4 cinit CODE >625:C:\Users\Ritier\AppData\Local\Temp\s5i8.
-1D6 cinit CODE >626:C:\Users\Ritier\AppData\Local\Temp\s5i8.
-1D6 cinit CODE >627:C:\Users\Ritier\AppData\Local\Temp\s5i8.
-1D8 cinit CODE >628:C:\Users\Ritier\AppData\Local\Temp\s5i8.
-1DA cinit CODE >629:C:\Users\Ritier\AppData\Local\Temp\s5i8.
-1DC cinit CODE >635:C:\Users\Ritier\AppData\Local\Temp\s5i8.
-1DC cinit CODE >637:C:\Users\Ritier\AppData\Local\Temp\s5i8.
-1DE cinit CODE >638:C:\Users\Ritier\AppData\Local\Temp\s5i8.
-1E0 cinit CODE >640:C:\Users\Ritier\AppData\Local\Temp\s5i8.
-1E2 cinit CODE >641:C:\Users\Ritier\AppData\Local\Temp\s5i8.
-1E4 cinit CODE >642:C:\Users\Ritier\AppData\Local\Temp\s5i8.
-1E6 cinit CODE >643:C:\Users\Ritier\AppData\Local\Temp\s5i8.
+1D0 cinit CODE >598:C:\Users\Ritier\AppData\Local\Temp\seqg.
+1D0 cinit CODE >600:C:\Users\Ritier\AppData\Local\Temp\seqg.
+1D0 cinit CODE >603:C:\Users\Ritier\AppData\Local\Temp\seqg.
+1D0 cinit CODE >624:C:\Users\Ritier\AppData\Local\Temp\seqg.
+1D4 cinit CODE >625:C:\Users\Ritier\AppData\Local\Temp\seqg.
+1D6 cinit CODE >626:C:\Users\Ritier\AppData\Local\Temp\seqg.
+1D6 cinit CODE >627:C:\Users\Ritier\AppData\Local\Temp\seqg.
+1D8 cinit CODE >628:C:\Users\Ritier\AppData\Local\Temp\seqg.
+1DA cinit CODE >629:C:\Users\Ritier\AppData\Local\Temp\seqg.
+1DC cinit CODE >635:C:\Users\Ritier\AppData\Local\Temp\seqg.
+1DC cinit CODE >637:C:\Users\Ritier\AppData\Local\Temp\seqg.
+1DE cinit CODE >638:C:\Users\Ritier\AppData\Local\Temp\seqg.
+1E0 cinit CODE >640:C:\Users\Ritier\AppData\Local\Temp\seqg.
+1E2 cinit CODE >641:C:\Users\Ritier\AppData\Local\Temp\seqg.
+1E4 cinit CODE >642:C:\Users\Ritier\AppData\Local\Temp\seqg.
+1E6 cinit CODE >643:C:\Users\Ritier\AppData\Local\Temp\seqg.
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -177,26 +177,26 @@ __Hspace_1 1F 0 ABS 0 - dist/default/production\sonar-pic18f-srf05.X.production.
 __Hspace_2 0 0 ABS 0 - dist/default/production\sonar-pic18f-srf05.X.production.obj
 __CFG_IESO$OFF 0 0 ABS 0 - dist/default/production\sonar-pic18f-srf05.X.production.obj
 __Hibigdata 0 0 CODE 0 ibigdata dist/default/production\sonar-pic18f-srf05.X.production.obj
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\Ritier\AppData\Local\Temp\s5i8.obj
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\Ritier\AppData\Local\Temp\seqg.obj
 __Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\sonar-pic18f-srf05.X.production.obj
 _T1CONbits FCD 0 ABS 0 - dist/default/production\sonar-pic18f-srf05.X.production.obj
 __Lsmallconst 0 0 SMALLCONST 0 smallconst dist/default/production\sonar-pic18f-srf05.X.production.obj
-___sp 0 0 STACK 2 stack C:\Users\Ritier\AppData\Local\Temp\s5i8.obj
+___sp 0 0 STACK 2 stack C:\Users\Ritier\AppData\Local\Temp\seqg.obj
 _main 1EA 0 CODE 0 text0 dist/default/production\sonar-pic18f-srf05.X.production.obj
 _temp 19 0 COMRAM 1 bssCOMRAM dist/default/production\sonar-pic18f-srf05.X.production.obj
 btemp 1E 0 COMRAM 1 temp dist/default/production\sonar-pic18f-srf05.X.production.obj
-start 10A 0 CODE 0 init C:\Users\Ritier\AppData\Local\Temp\s5i8.obj
+start 10A 0 CODE 0 init C:\Users\Ritier\AppData\Local\Temp\seqg.obj
 __size_of_main 0 0 ABS 0 - dist/default/production\sonar-pic18f-srf05.X.production.obj
 __CFG_WDTEN$OFF 0 0 ABS 0 - dist/default/production\sonar-pic18f-srf05.X.production.obj
 __HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\sonar-pic18f-srf05.X.production.obj
 _trigger 1D 0 COMRAM 1 bssCOMRAM dist/default/production\sonar-pic18f-srf05.X.production.obj
 __Hpowerup 10A 0 CODE 0 powerup dist/default/production\sonar-pic18f-srf05.X.production.obj
 _distance 15 0 COMRAM 1 bssCOMRAM dist/default/production\sonar-pic18f-srf05.X.production.obj
-__accesstop 60 0 ABS 0 - C:\Users\Ritier\AppData\Local\Temp\s5i8.obj
-intlevel0 0 0 CODE 0 text C:\Users\Ritier\AppData\Local\Temp\s5i8.obj
-intlevel1 0 0 CODE 0 text C:\Users\Ritier\AppData\Local\Temp\s5i8.obj
-intlevel2 0 0 CODE 0 text C:\Users\Ritier\AppData\Local\Temp\s5i8.obj
-intlevel3 0 0 CODE 0 text C:\Users\Ritier\AppData\Local\Temp\s5i8.obj
+__accesstop 60 0 ABS 0 - C:\Users\Ritier\AppData\Local\Temp\seqg.obj
+intlevel0 0 0 CODE 0 text C:\Users\Ritier\AppData\Local\Temp\seqg.obj
+intlevel1 0 0 CODE 0 text C:\Users\Ritier\AppData\Local\Temp\seqg.obj
+intlevel2 0 0 CODE 0 text C:\Users\Ritier\AppData\Local\Temp\seqg.obj
+intlevel3 0 0 CODE 0 text C:\Users\Ritier\AppData\Local\Temp\seqg.obj
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/production\sonar-pic18f-srf05.X.production.obj
 _OSCCONbits FD3 0 ABS 0 - dist/default/production\sonar-pic18f-srf05.X.production.obj
 __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/production\sonar-pic18f-srf05.X.production.obj
@@ -205,8 +205,8 @@ __size_of_interruptions 0 0 ABS 0 - dist/default/production\sonar-pic18f-srf05.X
 __Hclrtext 0 0 ABS 0 clrtext dist/default/production\sonar-pic18f-srf05.X.production.obj
 __CFG_FOSC$INTIO67 0 0 ABS 0 - dist/default/production\sonar-pic18f-srf05.X.production.obj
 _ANSELA F38 0 ABS 0 - dist/default/production\sonar-pic18f-srf05.X.production.obj
-___inthi_sp 0 0 STACK 2 stack C:\Users\Ritier\AppData\Local\Temp\s5i8.obj
-___intlo_sp 0 0 STACK 2 stack C:\Users\Ritier\AppData\Local\Temp\s5i8.obj
+___inthi_sp 0 0 STACK 2 stack C:\Users\Ritier\AppData\Local\Temp\seqg.obj
+___intlo_sp 0 0 STACK 2 stack C:\Users\Ritier\AppData\Local\Temp\seqg.obj
 __Hintcode_body 0 0 ABS 0 intcode_body dist/default/production\sonar-pic18f-srf05.X.production.obj
 __Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/production\sonar-pic18f-srf05.X.production.obj
 __end_of_interruptions 10A 0 CODE 0 intcode dist/default/production\sonar-pic18f-srf05.X.production.obj
@@ -241,7 +241,7 @@ __Htext1 0 0 ABS 0 text1 dist/default/production\sonar-pic18f-srf05.X.production
 __Htext3 0 0 ABS 0 text3 dist/default/production\sonar-pic18f-srf05.X.production.obj
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/default/production\sonar-pic18f-srf05.X.production.obj
 __Hbigram 0 0 ABS 0 bigram dist/default/production\sonar-pic18f-srf05.X.production.obj
-__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\Ritier\AppData\Local\Temp\s5i8.obj
+__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\Ritier\AppData\Local\Temp\seqg.obj
 __Hcomram 0 0 ABS 0 comram dist/default/production\sonar-pic18f-srf05.X.production.obj
 __Hconfig 30000E 0 CONFIG 0 config dist/default/production\sonar-pic18f-srf05.X.production.obj
 __Lbank0 0 0 ABS 0 bank0 dist/default/production\sonar-pic18f-srf05.X.production.obj
@@ -305,8 +305,8 @@ __Lconfig 300000 0 CONFIG 0 config dist/default/production\sonar-pic18f-srf05.X.
 __Lfarbss 0 0 FARRAM 0 farbss dist/default/production\sonar-pic18f-srf05.X.production.obj
 __Lfardata 0 0 FARRAM 0 fardata dist/default/production\sonar-pic18f-srf05.X.production.obj
 _CCP5CONbits F54 0 ABS 0 - dist/default/production\sonar-pic18f-srf05.X.production.obj
-stackhi 5FF 0 ABS 0 - C:\Users\Ritier\AppData\Local\Temp\s5i8.obj
-stacklo 60 0 ABS 0 - C:\Users\Ritier\AppData\Local\Temp\s5i8.obj
+stackhi 5FF 0 ABS 0 - C:\Users\Ritier\AppData\Local\Temp\seqg.obj
+stacklo 60 0 ABS 0 - C:\Users\Ritier\AppData\Local\Temp\seqg.obj
 __Lintcode 8 0 CODE 0 intcode dist/default/production\sonar-pic18f-srf05.X.production.obj
 __Lintret 0 0 ABS 0 intret dist/default/production\sonar-pic18f-srf05.X.production.obj
 __Lirdata 0 0 CODE 0 irdata dist/default/production\sonar-pic18f-srf05.X.production.obj
@@ -332,7 +332,7 @@ __ptext0 1EA 0 CODE 0 text0 dist/default/production\sonar-pic18f-srf05.X.product
 __ptext1 17C 0 CODE 0 text1 dist/default/production\sonar-pic18f-srf05.X.production.obj
 __ptext3 10E 0 CODE 0 text3 dist/default/production\sonar-pic18f-srf05.X.production.obj
 __Lstruct 0 0 COMRAM 1 struct dist/default/production\sonar-pic18f-srf05.X.production.obj
-__ramtop 600 0 RAM 0 ramtop C:\Users\Ritier\AppData\Local\Temp\s5i8.obj
+__ramtop 600 0 RAM 0 ramtop C:\Users\Ritier\AppData\Local\Temp\seqg.obj
 __Lpowerup 10A 0 CODE 0 powerup dist/default/production\sonar-pic18f-srf05.X.production.obj
 __Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/production\sonar-pic18f-srf05.X.production.obj
 __Lreset_vec 0 0 CODE 0 reset_vec dist/default/production\sonar-pic18f-srf05.X.production.obj
