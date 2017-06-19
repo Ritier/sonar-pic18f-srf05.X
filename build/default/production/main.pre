@@ -8068,8 +8068,60 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
+# 4 "esclave.h"
+void esclaveInterruptions();
+void esclaveMain(void);
 
-# 18 "main.c"
+# 8 "i2c.h"
+typedef enum {
+LECTURE_POTENTIOMETRE = 0b00011001,
+ECRITURE_SERVO_0 = 0b00011000,
+ECRITURE_SERVO_1 = 0b00011010
+} I2cAdresse;
+
+typedef struct {
+I2cAdresse adresse;
+unsigned char valeur;
+} I2cCommande;
+
+typedef void (*I2cRappelCommande)(unsigned char, unsigned char);
+void i2cRappelCommande(I2cRappelCommande r);
+void i2cExposeValeur(unsigned char adresse, unsigned char valeur);
+void i2cPrepareCommandePourEmission(I2cAdresse adresse, unsigned char valeur);
+unsigned char i2cDonneesDisponiblesPourEmission();
+unsigned char i2cRecupereCaracterePourEmission();
+
+void i2cMaitre();
+void i2cEsclave();
+
+void i2cReinitialise();
+
+# 6 "file.h"
+typedef struct {
+
+char file[10];
+
+
+unsigned char fileEntree;
+
+
+unsigned char fileSortie;
+
+
+char fileVide;
+
+
+char filePleine;
+} File;
+
+void fileEnfile(File *file, char c);
+char fileDefile(File *file);
+char fileEstVide(File *file);
+char fileEstPleine(File *file);
+void fileReinitialise(File *file);
+
+
+# 21 "main.c"
 #pragma config FOSC = INTIO67
 #pragma config IESO = OFF
 #pragma config FCMEN = OFF
@@ -8109,7 +8161,7 @@ RCONbits.IPEN = 1;
 INTCONbits.GIEH = 1;
 INTCONbits.GIEL = 1;
 
-# 61
+# 64
 PIE1bits.TMR2IE = 1;
 IPR1bits.TMR2IP = 1;
 
@@ -8120,7 +8172,7 @@ T2CONbits.T2CKPS1 = 0;
 T2CONbits.T2CKPS0 = 0;
 PR2 = 1;
 
-# 75
+# 78
 CCP5CONbits.CCP5M = 0b101;
 CCPTMRS1bits.C5TSEL = 0;
 PIE4bits.CCP5IE = 1;
@@ -8137,13 +8189,31 @@ T1CONbits.T1CKPS = 0b00;
 T1CONbits.TMR1CS = 0;
 T1CONbits.T1RD16 = 1;
 
-# 103
+
+TRISCbits.RC3 = 1;
+ANSELCbits.ANSC3 = 0;
+TRISCbits.RC4 = 1;
+ANSELCbits.ANSC4 = 0;
+
+SSP1CON1bits.SSPEN = 1;
+
+SSP1ADD = ECRITURE_SERVO_0;
+SSP1MSK = 0b11111000;
+SSP1CON1bits.SSPM = 0b1110;
+
+SSP1CON3bits.PCIE = 0;
+SSP1CON3bits.SCIE = 0;
+SSP1CON3bits.SBCDE = 0;
+
+PIE1bits.SSP1IE = 1;
+IPR1bits.SSP1IP = 0;
+
 }
 
 void interrupt interruptions()
 {
 
-# 113
+# 123
 if (PIR1bits.TMR2IF) {
 switch (trigger){
 case TRIGGER_ON:
@@ -8183,7 +8253,6 @@ PIR4bits.CCP5IF = 0;
 }
 }
 
-# 157
 void CompleteCapture(unsigned int instant) {
 if (instant >= capture){
 capture = (instant - capture);
@@ -8207,5 +8276,7 @@ PORTAbits.RA2 = 0;
 void main(void) {
 
 initialisationHardware();
+i2cReinitialise();
+i2cRappelCommande(CompleteCapture);
 while (1);
 }

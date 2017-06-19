@@ -1,8 +1,6 @@
 #include <xc.h>
 #include "i2c.h"
 #include "file.h"
-#include "pwm.h"
-#include "test.h"
 
 File fileEmission;
 

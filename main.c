@@ -8,6 +8,9 @@ static int pulse = 0;
 static int temp = 0;
 
 #include <xc.h>
+#include "esclave.h"
+#include "i2c.h"
+#include "file.h"
 
 #define CAPTURE_FLANC_MONTANT 0b101
 #define CAPTURE_FLANC_DESCENDANT 0b100
@@ -87,19 +90,26 @@ void initialisationHardware(){
    T1CONbits.T1CKPS = 0b00; // Diviseur de fréquence (comme tmr2): 1/4
    T1CONbits.TMR1CS = 0;    // La source est l'horloge interne Fosc/4
    T1CONbits.T1RD16 = 1;    // Active l'accès simultané à TMRxH et TMRxL (16 bits)
-	
-	
-/*	//Timer1 Registers Prescaler= 1 - TMR1 Preset = 0 - Freq = 3.81 Hz - Period = 0.262144 seconds
-	T1CONbits.T1CKPS1 = 0;   // bits 5-4  Prescaler Rate Select bits
-	T1CONbits.T1CKPS0 = 0;   // bit 4
-	T1CONbits.T1OSCEN = 1;   // bit 3 Timer1 Oscillator Enable Control bit 1 = on
-	T1CONbits.T1SYNC = 1;    // bit 2 Timer1 External Clock Input Synchronization Control bit...1 = Do not synchronize external clock input
-	T1CONbits.TMR1CS = 01;    // bit 1 Timer1 Clock Source Select bit...0 = Internal clock (FOSC/4)
-	T1CONbits.TMR1ON = 1;    // bit 0 enables timer
-	T1CONbits.T1RD16 = 1;   //Active l'accès simultané à TMRxH et TMRxL (16 bits
-	TMR1H = 0;             // preset for timer1 MSB register
-	TMR1L = 0;             // preset for timer1 LSB register
-*/
+   
+   // Active le MSSP1 en mode Esclave I2C:
+    TRISCbits.RC3 = 1;          // RC3 comme entrée...
+    ANSELCbits.ANSC3 = 0;       // ... digitale.
+    TRISCbits.RC4 = 1;          // RC4 comme entrée...
+    ANSELCbits.ANSC4 = 0;       // ... digitale.
+
+    SSP1CON1bits.SSPEN = 1;     // Active le module SSP.    
+    
+    SSP1ADD = ECRITURE_SERVO_0;   // Adresse de l'esclave.
+    SSP1MSK = I2C_MASQUE_ADRESSES_ESCLAVES;
+    SSP1CON1bits.SSPM = 0b1110; // SSP1 en mode esclave I2C avec adresse de 7 bits et interruptions STOP et START.
+        
+    SSP1CON3bits.PCIE = 0;      // Désactive l'interruption en cas STOP.
+    SSP1CON3bits.SCIE = 0;      // Désactive l'interruption en cas de START.
+    SSP1CON3bits.SBCDE = 0;     // Désactive l'interruption en cas de collision.
+
+    PIE1bits.SSP1IE = 1;        // Interruption en cas de transmission I2C...
+    IPR1bits.SSP1IP = 0;        // ... de basse priorité.
+
 }
 
 void interrupt interruptions()
@@ -149,11 +159,6 @@ void interrupt interruptions()
     }
 }
 
-/**
- * Complète une capture PWM, et met à jour le canal indiqué.
- * @param canal Le numéro de canal.
- * @param instant L'instant de finalisation de la capture.
- */
 void CompleteCapture(unsigned int instant) {
         if (instant >= capture){
            capture = (instant - capture); 
@@ -177,5 +182,7 @@ void CompleteCapture(unsigned int instant) {
 void main(void) {
     
     initialisationHardware();
+    i2cReinitialise();
+    i2cRappelCommande(CompleteCapture);
     while (1);
 }
