@@ -99,7 +99,7 @@ void initialisationHardware(){
 
     SSP1CON1bits.SSPEN = 1;     // Active le module SSP.    
     
-    SSP1ADD = LECTURE_DISTANCE;   // Adresse de l'esclave.
+    SSP1ADD = I2C_MASQUE_ADRESSE_BASE;     // Adresse de l'esclave.
     SSP1MSK = I2C_MASQUE_ADRESSES_ESCLAVES;
     SSP1CON1bits.SSPM = 0b1110; // SSP1 en mode esclave I2C avec adresse de 7 bits et interruptions STOP et START.
         

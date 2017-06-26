@@ -185,10 +185,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _SSP1CON1bits `VS637 ~T0 @X0 0 e@4038 ]
 "14039
 [v _SSP1ADD `Vuc ~T0 @X0 0 e@4040 ]
-"102 main.c
-[c E6625 25 .. ]
-[n E6625 . LECTURE_DISTANCE  ]
-"14345 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f25k22.h
+"14345
 [v _SSP1MSK `Vuc ~T0 @X0 0 e@4042 ]
 "14493
 [s S702 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -265,13 +262,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _CCPR5 `Vus ~T0 @X0 0 e@3925 ]
 "41 main.c
 [v _CompleteCapture `(v ~T0 @X0 0 ef1`ui ]
-"25 i2c.h
+"26 i2c.h
 [v _i2cEsclave `(v ~T0 @X0 0 ef ]
 [v F6633 `(v ~T0 @X0 0 tf2`uc`uc ]
-"18
+"19
 [v _i2cRappelCommande `(v ~T0 @X0 0 ef1`*F6633 ]
 [p mainexit ]
-"27
+"28
 [v _i2cReinitialise `(v ~T0 @X0 0 ef ]
 "7 main.c
 [v _pulse `i ~T0 @X0 1 s ]
@@ -6558,22 +6555,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 161: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 163: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 165: extern __nonreentrant void _delay3(unsigned char);
-[; ;i2c.h: 8: typedef enum {
-[; ;i2c.h: 9: LECTURE_DISTANCE = 0b00011001,
-[; ;i2c.h: 10: } I2cAdresse;
-[; ;i2c.h: 12: typedef struct {
-[; ;i2c.h: 13: I2cAdresse adresse;
-[; ;i2c.h: 14: unsigned char valeur;
-[; ;i2c.h: 15: } I2cCommande;
-[; ;i2c.h: 17: typedef void (*I2cRappelCommande)(unsigned char, unsigned char);
-[; ;i2c.h: 18: void i2cRappelCommande(I2cRappelCommande r);
-[; ;i2c.h: 19: void i2cExposeValeur(unsigned char adresse, unsigned char valeur);
-[; ;i2c.h: 20: void i2cPrepareCommandePourEmission(I2cAdresse adresse, unsigned char valeur);
-[; ;i2c.h: 21: unsigned char i2cDonneesDisponiblesPourEmission();
-[; ;i2c.h: 22: unsigned char i2cRecupereCaracterePourEmission();
-[; ;i2c.h: 24: void i2cMaitre();
-[; ;i2c.h: 25: void i2cEsclave();
-[; ;i2c.h: 27: void i2cReinitialise();
+[; ;i2c.h: 9: typedef enum {
+[; ;i2c.h: 10: LECTURE_DISTANCE = 0b00011001,
+[; ;i2c.h: 11: } I2cAdresse;
+[; ;i2c.h: 13: typedef struct {
+[; ;i2c.h: 14: I2cAdresse adresse;
+[; ;i2c.h: 15: unsigned char valeur;
+[; ;i2c.h: 16: } I2cCommande;
+[; ;i2c.h: 18: typedef void (*I2cRappelCommande)(unsigned char, unsigned char);
+[; ;i2c.h: 19: void i2cRappelCommande(I2cRappelCommande r);
+[; ;i2c.h: 20: void i2cExposeValeur(unsigned char adresse, unsigned char valeur);
+[; ;i2c.h: 21: void i2cPrepareCommandePourEmission(I2cAdresse adresse, unsigned char valeur);
+[; ;i2c.h: 22: unsigned char i2cDonneesDisponiblesPourEmission();
+[; ;i2c.h: 23: unsigned char i2cRecupereCaracterePourEmission();
+[; ;i2c.h: 25: void i2cMaitre();
+[; ;i2c.h: 26: void i2cEsclave();
+[; ;i2c.h: 28: void i2cReinitialise();
 [; ;file.h: 6: typedef struct {
 [; ;file.h: 8: char file[10];
 [; ;file.h: 11: unsigned char fileEntree;
@@ -6708,12 +6705,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 100: SSP1CON1bits.SSPEN = 1;
 "100
 [e = . . _SSP1CON1bits 0 2 -> -> 1 `i `uc ]
-[; ;main.c: 102: SSP1ADD = LECTURE_DISTANCE;
+[; ;main.c: 102: SSP1ADD = 0b00011000;
 "102
-[e = _SSP1ADD -> . `E6625 0 `uc ]
-[; ;main.c: 103: SSP1MSK = 0b0001100;
+[e = _SSP1ADD -> -> 24 `i `uc ]
+[; ;main.c: 103: SSP1MSK = 0b11111110;
 "103
-[e = _SSP1MSK -> -> 12 `i `uc ]
+[e = _SSP1MSK -> -> 254 `i `uc ]
 [; ;main.c: 104: SSP1CON1bits.SSPM = 0b1110;
 "104
 [e = . . _SSP1CON1bits 0 0 -> -> 14 `i `uc ]

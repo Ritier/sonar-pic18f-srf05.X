@@ -8068,7 +8068,7 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 8 "i2c.h"
+# 9 "i2c.h"
 typedef enum {
 LECTURE_DISTANCE = 0b00011001,
 } I2cAdresse;
@@ -8188,8 +8188,8 @@ ANSELCbits.ANSC4 = 0;
 
 SSP1CON1bits.SSPEN = 1;
 
-SSP1ADD = LECTURE_DISTANCE;
-SSP1MSK = 0b0001100;
+SSP1ADD = 0b00011000;
+SSP1MSK = 0b11111110;
 SSP1CON1bits.SSPM = 0b1110;
 
 SSP1CON3bits.PCIE = 0;
