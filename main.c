@@ -7,8 +7,8 @@
 static int pulse = 0;
 static int temp = 0;
 
+
 #include <xc.h>
-#include "esclave.h"
 #include "i2c.h"
 #include "file.h"
 
@@ -36,14 +36,14 @@ typedef enum {
 Trigger trigger;
 
 static unsigned int capture;
-unsigned int distance;
+unsigned char distance;
 
 void CompleteCapture(unsigned int instant);
 
 void initialisationHardware(){
     
-   OSCCONbits.IRCF = 0b111;
-   OSCCONbits.SCS = 11;
+   //OSCCONbits.IRCF = 0b111;
+   //OSCCONbits.SCS = 11;
 	
  // ANSELB=0;
 	ANSELA=0;
@@ -99,7 +99,7 @@ void initialisationHardware(){
 
     SSP1CON1bits.SSPEN = 1;     // Active le module SSP.    
     
-    SSP1ADD = ECRITURE_SERVO_0;   // Adresse de l'esclave.
+    SSP1ADD = LECTURE_DISTANCE;   // Adresse de l'esclave.
     SSP1MSK = I2C_MASQUE_ADRESSES_ESCLAVES;
     SSP1CON1bits.SSPM = 0b1110; // SSP1 en mode esclave I2C avec adresse de 7 bits et interruptions STOP et START.
         
@@ -113,13 +113,7 @@ void initialisationHardware(){
 }
 
 void interrupt interruptions()
-{
-   // if (INTCONbits.TMR0IF) {
-        
-        // Baisse le drapeau d'interruption pour la prochaine fois.
-  //      INTCONbits.TMR0IF = 0;
-   // }
-    
+{ 
     if (PIR1bits.TMR2IF) {
         switch (trigger){
 			case TRIGGER_ON:
@@ -157,20 +151,29 @@ void interrupt interruptions()
         }
         PIR4bits.CCP5IF = 0;        
     }
+	
+	// Interruptions si transmission I2C
+	 if (PIR1bits.SSP1IF) {
+        i2cEsclave();
+        i2cRappelCommande(CompleteCapture);
+    }
+	
+	
+	
 }
 
 void CompleteCapture(unsigned int instant) {
-        if (instant >= capture){
+	   if (instant >= capture){
            capture = (instant - capture); 
         } else {
             capture = (65536 - capture);
             capture = (instant + capture); 
         }       
-        distance = capture;
-        if (distance > 15000){
+        distance = (capture / 257);
+        if (distance > 60){
             PORTAbits.RA3 = 1;
             PORTAbits.RA2 = 1;
-        } else if (distance > 5000){
+        } else if (distance > 20){
             PORTAbits.RA3 = 1;
             PORTAbits.RA2 = 0;
         } else {
@@ -183,6 +186,7 @@ void main(void) {
     
     initialisationHardware();
     i2cReinitialise();
+    i2cEsclave();
     i2cRappelCommande(CompleteCapture);
-    while (1);
+    while (1) ;
 }

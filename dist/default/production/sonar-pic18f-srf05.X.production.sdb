@@ -4,18 +4,16 @@
 [d chip 18F25K22 ]
 [d frameptr 4065 ]
 "36 C:\Users\Ritier\Documents\sonar-pic18f-srf05.X\main.c
-[e E6672 . `uc
+[e E6667 . `uc
 TRIGGER_ON 0
 TRIGGER_OFF 1
 ]
 "102
-[e E6628 . `uc
-LECTURE_POTENTIOMETRE 25
-ECRITURE_SERVO_0 24
-ECRITURE_SERVO_1 26
+[e E6625 . `uc
+LECTURE_DISTANCE 25
 ]
 "37 C:\Users\Ritier\Documents\sonar-pic18f-srf05.X\i2c.c
-[e E6668 . `uc
+[e E6666 . `uc
 I2C_MASTER_EMISSION_ADRESSE 0
 I2C_MASTER_PREPARE_RECEPTION_DONNEE 1
 I2C_MASTER_RECEPTION_DONNEE 2
@@ -25,9 +23,7 @@ I2C_MASTER_FIN_OPERATION 5
 ]
 "48
 [e E6623 . `uc
-LECTURE_POTENTIOMETRE 25
-ECRITURE_SERVO_0 24
-ECRITURE_SERVO_1 26
+LECTURE_DISTANCE 25
 ]
 "62 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
@@ -39,6 +35,9 @@ ECRITURE_SERVO_1 26
 [v ___ftmul __ftmul `(f  1 e 3 0 ]
 "20 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\ftsub.c
 [v ___ftsub __ftsub `(f  1 e 3 0 ]
+"8 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+[v i2___lwdiv __lwdiv `(ui  1 e 2 0 ]
 "10 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 3 0 ]
 "245
@@ -63,21 +62,27 @@ ECRITURE_SERVO_1 26
 [v _i2cRecupereCaracterePourEmission i2cRecupereCaracterePourEmission `(uc  1 e 1 0 ]
 "70
 [v _i2cRappelCommande i2cRappelCommande `(v  1 e 1 0 ]
+[v i2_i2cRappelCommande i2cRappelCommande `(v  1 e 1 0 ]
 "127
 [v _convertitEnAdresseLocale convertitEnAdresseLocale `(uc  1 e 1 0 ]
+[v i2_convertitEnAdresseLocale convertitEnAdresseLocale `(uc  1 e 1 0 ]
+"153
+[v _i2cEsclave i2cEsclave `(v  1 e 1 0 ]
+[v i2_i2cEsclave i2cEsclave `(v  1 e 1 0 ]
 "190
 [v _i2cReinitialise i2cReinitialise `(v  1 e 1 0 ]
 "43 C:\Users\Ritier\Documents\sonar-pic18f-srf05.X\main.c
 [v _initialisationHardware initialisationHardware `(v  1 e 1 0 ]
 "115
 [v _interruptions interruptions `II(v  1 e 1 0 ]
-"162
+"165
 [v _CompleteCapture CompleteCapture `(v  1 e 1 0 ]
-"182
+[v i2_CompleteCapture CompleteCapture `(v  1 e 1 0 ]
+"185
 [v _main main `(v  1 e 1 0 ]
 "49 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f25k22.h
 [v _ANSELA ANSELA `VEuc  1 e 1 @3896 ]
-[s S464 . 1 `uc 1 . 1 0 :2:0 
+[s S432 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 ANSC2 1 0 :1:2 
 `uc 1 ANSC3 1 0 :1:3 
 `uc 1 ANSC4 1 0 :1:4 
@@ -86,58 +91,58 @@ ECRITURE_SERVO_1 26
 `uc 1 ANSC7 1 0 :1:7 
 ]
 "158
-[u S472 . 1 `S464 1 . 1 0 ]
-[v _ANSELCbits ANSELCbits `VES472  1 e 1 @3898 ]
-[s S327 . 1 `uc 1 C4TSEL 1 0 :2:0 
+[u S440 . 1 `S432 1 . 1 0 ]
+[v _ANSELCbits ANSELCbits `VES440  1 e 1 @3898 ]
+[s S295 . 1 `uc 1 C4TSEL 1 0 :2:0 
 `uc 1 C5TSEL 1 0 :2:2 
 ]
 "1243
-[s S330 . 1 `uc 1 C4TSEL0 1 0 :1:0 
+[s S298 . 1 `uc 1 C4TSEL0 1 0 :1:0 
 `uc 1 C4TSEL1 1 0 :1:1 
 `uc 1 C5TSEL0 1 0 :1:2 
 `uc 1 C5TSEL1 1 0 :1:3 
 ]
-[u S335 . 1 `S327 1 . 1 0 `S330 1 . 1 0 ]
-[v _CCPTMRS1bits CCPTMRS1bits `VES335  1 e 1 @3912 ]
-[s S303 . 1 `uc 1 CCP5M 1 0 :4:0 
+[u S303 . 1 `S295 1 . 1 0 `S298 1 . 1 0 ]
+[v _CCPTMRS1bits CCPTMRS1bits `VES303  1 e 1 @3912 ]
+[s S271 . 1 `uc 1 CCP5M 1 0 :4:0 
 `uc 1 DC5B 1 0 :2:4 
 ]
 "1831
-[s S306 . 1 `uc 1 CCP5M0 1 0 :1:0 
+[s S274 . 1 `uc 1 CCP5M0 1 0 :1:0 
 `uc 1 CCP5M1 1 0 :1:1 
 `uc 1 CCP5M2 1 0 :1:2 
 `uc 1 CCP5M3 1 0 :1:3 
 `uc 1 DC5B0 1 0 :1:4 
 `uc 1 DC5B1 1 0 :1:5 
 ]
-[u S313 . 1 `S303 1 . 1 0 `S306 1 . 1 0 ]
-[v _CCP5CONbits CCP5CONbits `VES313  1 e 1 @3924 ]
+[u S281 . 1 `S271 1 . 1 0 `S274 1 . 1 0 ]
+[v _CCP5CONbits CCP5CONbits `VES281  1 e 1 @3924 ]
 "1875
 [v _CCPR5 CCPR5 `VEus  1 e 2 @3925 ]
-[s S347 . 1 `uc 1 CCP3IE 1 0 :1:0 
+[s S315 . 1 `uc 1 CCP3IE 1 0 :1:0 
 `uc 1 CCP4IE 1 0 :1:1 
 `uc 1 CCP5IE 1 0 :1:2 
 ]
 "5900
-[u S351 . 1 `S347 1 . 1 0 ]
-[v _PIE4bits PIE4bits `VES351  1 e 1 @3962 ]
-[s S732 . 1 `uc 1 CCP3IF 1 0 :1:0 
+[u S319 . 1 `S315 1 . 1 0 ]
+[v _PIE4bits PIE4bits `VES319  1 e 1 @3962 ]
+[s S698 . 1 `uc 1 CCP3IF 1 0 :1:0 
 `uc 1 CCP4IF 1 0 :1:1 
 `uc 1 CCP5IF 1 0 :1:2 
 ]
 "5931
-[u S736 . 1 `S732 1 . 1 0 ]
-[v _PIR4bits PIR4bits `VES736  1 e 1 @3963 ]
-[s S358 . 1 `uc 1 CCP3IP 1 0 :1:0 
+[u S702 . 1 `S698 1 . 1 0 ]
+[v _PIR4bits PIR4bits `VES702  1 e 1 @3963 ]
+[s S326 . 1 `uc 1 CCP3IP 1 0 :1:0 
 `uc 1 CCP4IP 1 0 :1:1 
 `uc 1 CCP5IP 1 0 :1:2 
 ]
 "5965
-[s S362 . 1 `uc 1 CCIP3IP 1 0 :1:0 
+[s S330 . 1 `uc 1 CCIP3IP 1 0 :1:0 
 ]
-[u S364 . 1 `S358 1 . 1 0 `S362 1 . 1 0 ]
-[v _IPR4bits IPR4bits `VES364  1 e 1 @3964 ]
-[s S66 . 1 `uc 1 RA0 1 0 :1:0 
+[u S332 . 1 `S326 1 . 1 0 `S330 1 . 1 0 ]
+[v _IPR4bits IPR4bits `VES332  1 e 1 @3964 ]
+[s S34 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -147,66 +152,66 @@ ECRITURE_SERVO_1 26
 `uc 1 RA7 1 0 :1:7 
 ]
 "6182
-[s S594 . 1 `uc 1 AN0 1 0 :1:0 
+[s S560 . 1 `uc 1 AN0 1 0 :1:0 
 `uc 1 AN1 1 0 :1:1 
 `uc 1 AN2 1 0 :1:2 
 `uc 1 AN3 1 0 :1:3 
 `uc 1 . 1 0 :1:4 
 `uc 1 AN4 1 0 :1:5 
 ]
-[s S601 . 1 `uc 1 C12IN0M 1 0 :1:0 
+[s S567 . 1 `uc 1 C12IN0M 1 0 :1:0 
 `uc 1 C12IN1M 1 0 :1:1 
 `uc 1 C2INP 1 0 :1:2 
 `uc 1 C1INP 1 0 :1:3 
 `uc 1 C1OUT 1 0 :1:4 
 `uc 1 C2OUT 1 0 :1:5 
 ]
-[s S608 . 1 `uc 1 C12IN0N 1 0 :1:0 
+[s S574 . 1 `uc 1 C12IN0N 1 0 :1:0 
 `uc 1 C12IN1N 1 0 :1:1 
 `uc 1 VREFM 1 0 :1:2 
 `uc 1 VREFP 1 0 :1:3 
 `uc 1 T0CKI 1 0 :1:4 
 `uc 1 SS 1 0 :1:5 
 ]
-[s S615 . 1 `uc 1 . 1 0 :5:0 
+[s S581 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_SS 1 0 :1:5 
 ]
-[s S618 . 1 `uc 1 . 1 0 :2:0 
+[s S584 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 VREFN 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
 `uc 1 SRQ 1 0 :1:4 
 `uc 1 nSS 1 0 :1:5 
 ]
-[s S624 . 1 `uc 1 . 1 0 :2:0 
+[s S590 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 CVREF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
 `uc 1 CCP5 1 0 :1:4 
 `uc 1 LVDIN 1 0 :1:5 
 ]
-[s S630 . 1 `uc 1 . 1 0 :2:0 
+[s S596 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 DACOUT 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 HLVDIN 1 0 :1:5 
 ]
-[s S635 . 1 `uc 1 . 1 0 :5:0 
+[s S601 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 SS1 1 0 :1:5 
 ]
-[s S638 . 1 `uc 1 . 1 0 :5:0 
+[s S604 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_SS1 1 0 :1:5 
 ]
-[s S641 . 1 `uc 1 . 1 0 :5:0 
+[s S607 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 nSS1 1 0 :1:5 
 ]
-[s S644 . 1 `uc 1 . 1 0 :5:0 
+[s S610 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 SRNQ 1 0 :1:5 
 ]
-[s S647 . 1 `uc 1 ULPWUIN 1 0 :1:0 
+[s S613 . 1 `uc 1 ULPWUIN 1 0 :1:0 
 `uc 1 . 1 0 :6:1 
 `uc 1 RJPU 1 0 :1:7 
 ]
-[u S651 . 1 `S66 1 . 1 0 `S594 1 . 1 0 `S601 1 . 1 0 `S608 1 . 1 0 `S615 1 . 1 0 `S618 1 . 1 0 `S624 1 . 1 0 `S630 1 . 1 0 `S635 1 . 1 0 `S638 1 . 1 0 `S641 1 . 1 0 `S644 1 . 1 0 `S647 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES651  1 e 1 @3968 ]
-[s S57 . 1 `uc 1 TRISA0 1 0 :1:0 
+[u S617 . 1 `S34 1 . 1 0 `S560 1 . 1 0 `S567 1 . 1 0 `S574 1 . 1 0 `S581 1 . 1 0 `S584 1 . 1 0 `S590 1 . 1 0 `S596 1 . 1 0 `S601 1 . 1 0 `S604 1 . 1 0 `S607 1 . 1 0 `S610 1 . 1 0 `S613 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES617  1 e 1 @3968 ]
+[s S25 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -216,9 +221,9 @@ ECRITURE_SERVO_1 26
 `uc 1 TRISA7 1 0 :1:7 
 ]
 "7527
-[u S75 . 1 `S57 1 . 1 0 `S66 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES75  1 e 1 @3986 ]
-[s S424 . 1 `uc 1 TRISC0 1 0 :1:0 
+[u S43 . 1 `S25 1 . 1 0 `S34 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES43  1 e 1 @3986 ]
+[s S392 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 TRISC3 1 0 :1:3 
@@ -228,7 +233,7 @@ ECRITURE_SERVO_1 26
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "7969
-[s S433 . 1 `uc 1 RC0 1 0 :1:0 
+[s S401 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -237,9 +242,9 @@ ECRITURE_SERVO_1 26
 `uc 1 RC6 1 0 :1:6 
 `uc 1 RC7 1 0 :1:7 
 ]
-[u S442 . 1 `S424 1 . 1 0 `S433 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES442  1 e 1 @3988 ]
-[s S213 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[u S410 . 1 `S392 1 . 1 0 `S401 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES410  1 e 1 @3988 ]
+[s S181 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSP1IE 1 0 :1:3 
@@ -248,14 +253,14 @@ ECRITURE_SERVO_1 26
 `uc 1 ADIE 1 0 :1:6 
 ]
 "8548
-[s S221 . 1 `uc 1 . 1 0 :3:0 
+[s S189 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SSPIE 1 0 :1:3 
 `uc 1 TXIE 1 0 :1:4 
 `uc 1 RCIE 1 0 :1:5 
 ]
-[u S226 . 1 `S213 1 . 1 0 `S221 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES226  1 e 1 @3997 ]
-[s S555 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[u S194 . 1 `S181 1 . 1 0 `S189 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES194  1 e 1 @3997 ]
+[s S521 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSP1IF 1 0 :1:3 
@@ -264,14 +269,14 @@ ECRITURE_SERVO_1 26
 `uc 1 ADIF 1 0 :1:6 
 ]
 "8624
-[s S563 . 1 `uc 1 . 1 0 :3:0 
+[s S529 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SSPIF 1 0 :1:3 
 `uc 1 TXIF 1 0 :1:4 
 `uc 1 RCIF 1 0 :1:5 
 ]
-[u S568 . 1 `S555 1 . 1 0 `S563 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES568  1 e 1 @3998 ]
-[s S243 . 1 `uc 1 TMR1IP 1 0 :1:0 
+[u S534 . 1 `S521 1 . 1 0 `S529 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES534  1 e 1 @3998 ]
+[s S211 . 1 `uc 1 TMR1IP 1 0 :1:0 
 `uc 1 TMR2IP 1 0 :1:1 
 `uc 1 CCP1IP 1 0 :1:2 
 `uc 1 SSP1IP 1 0 :1:3 
@@ -280,21 +285,21 @@ ECRITURE_SERVO_1 26
 `uc 1 ADIP 1 0 :1:6 
 ]
 "8700
-[s S251 . 1 `uc 1 . 1 0 :3:0 
+[s S219 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SSPIP 1 0 :1:3 
 `uc 1 TXIP 1 0 :1:4 
 `uc 1 RCIP 1 0 :1:5 
 ]
-[u S256 . 1 `S243 1 . 1 0 `S251 1 . 1 0 ]
-[v _IPR1bits IPR1bits `VES256  1 e 1 @3999 ]
+[u S224 . 1 `S211 1 . 1 0 `S219 1 . 1 0 ]
+[v _IPR1bits IPR1bits `VES224  1 e 1 @3999 ]
 "12282
 [v _T2CON T2CON `VEuc  1 e 1 @4026 ]
-[s S274 . 1 `uc 1 T2CKPS 1 0 :2:0 
+[s S242 . 1 `uc 1 T2CKPS 1 0 :2:0 
 `uc 1 TMR2ON 1 0 :1:2 
 `uc 1 T2OUTPS 1 0 :4:3 
 ]
 "12303
-[s S278 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+[s S246 . 1 `uc 1 T2CKPS0 1 0 :1:0 
 `uc 1 T2CKPS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 T2OUTPS0 1 0 :1:3 
@@ -302,11 +307,11 @@ ECRITURE_SERVO_1 26
 `uc 1 T2OUTPS2 1 0 :1:5 
 `uc 1 T2OUTPS3 1 0 :1:6 
 ]
-[u S286 . 1 `S274 1 . 1 0 `S278 1 . 1 0 ]
-[v _T2CONbits T2CONbits `VES286  1 e 1 @4026 ]
+[u S254 . 1 `S242 1 . 1 0 `S246 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES254  1 e 1 @4026 ]
 "12352
 [v _PR2 PR2 `VEuc  1 e 1 @4027 ]
-[s S945 . 1 `uc 1 SEN 1 0 :1:0 
+[s S908 . 1 `uc 1 SEN 1 0 :1:0 
 `uc 1 RSEN 1 0 :1:1 
 `uc 1 PEN 1 0 :1:2 
 `uc 1 RCEN 1 0 :1:3 
@@ -316,7 +321,7 @@ ECRITURE_SERVO_1 26
 `uc 1 GCEN 1 0 :1:7 
 ]
 "12868
-[s S954 . 1 `uc 1 SEN1 1 0 :1:0 
+[s S917 . 1 `uc 1 SEN1 1 0 :1:0 
 `uc 1 ADMSK1 1 0 :1:1 
 `uc 1 ADMSK2 1 0 :1:2 
 `uc 1 ADMSK3 1 0 :1:3 
@@ -325,35 +330,35 @@ ECRITURE_SERVO_1 26
 `uc 1 ACKSTAT1 1 0 :1:6 
 `uc 1 GCEN1 1 0 :1:7 
 ]
-[s S963 . 1 `uc 1 . 1 0 :1:0 
+[s S926 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADMSK11 1 0 :1:1 
 `uc 1 ADMSK21 1 0 :1:2 
 `uc 1 ADMSK31 1 0 :1:3 
 `uc 1 ADMSK4 1 0 :1:4 
 `uc 1 ADMSK5 1 0 :1:5 
 ]
-[s S970 . 1 `uc 1 . 1 0 :1:0 
+[s S933 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RSEN1 1 0 :1:1 
 `uc 1 PEN1 1 0 :1:2 
 `uc 1 RCEN1 1 0 :1:3 
 `uc 1 ADMSK41 1 0 :1:4 
 `uc 1 ADMSK51 1 0 :1:5 
 ]
-[u S977 . 1 `S945 1 . 1 0 `S954 1 . 1 0 `S963 1 . 1 0 `S970 1 . 1 0 ]
-[v _SSP1CON2bits SSP1CON2bits `VES977  1 e 1 @4037 ]
-[s S483 . 1 `uc 1 SSPM 1 0 :4:0 
+[u S940 . 1 `S908 1 . 1 0 `S917 1 . 1 0 `S926 1 . 1 0 `S933 1 . 1 0 ]
+[v _SSP1CON2bits SSP1CON2bits `VES940  1 e 1 @4037 ]
+[s S451 . 1 `uc 1 SSPM 1 0 :4:0 
 `uc 1 CKP 1 0 :1:4 
 `uc 1 SSPEN 1 0 :1:5 
 `uc 1 SSPOV 1 0 :1:6 
 `uc 1 WCOL 1 0 :1:7 
 ]
 "13208
-[s S489 . 1 `uc 1 SSPM0 1 0 :1:0 
+[s S457 . 1 `uc 1 SSPM0 1 0 :1:0 
 `uc 1 SSPM1 1 0 :1:1 
 `uc 1 SSPM2 1 0 :1:2 
 `uc 1 SSPM3 1 0 :1:3 
 ]
-[s S494 . 1 `uc 1 SSPM01 1 0 :1:0 
+[s S462 . 1 `uc 1 SSPM01 1 0 :1:0 
 `uc 1 SSPM11 1 0 :1:1 
 `uc 1 SSPM21 1 0 :1:2 
 `uc 1 SSPM31 1 0 :1:3 
@@ -362,16 +367,16 @@ ECRITURE_SERVO_1 26
 `uc 1 SSPOV1 1 0 :1:6 
 `uc 1 WCOL1 1 0 :1:7 
 ]
-[u S503 . 1 `S483 1 . 1 0 `S489 1 . 1 0 `S494 1 . 1 0 ]
-[v _SSP1CON1bits SSP1CON1bits `VES503  1 e 1 @4038 ]
-[s S1017 . 1 `uc 1 . 1 0 :2:0 
+[u S471 . 1 `S451 1 . 1 0 `S457 1 . 1 0 `S462 1 . 1 0 ]
+[v _SSP1CON1bits SSP1CON1bits `VES471  1 e 1 @4038 ]
+[s S980 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_NOT_W 1 0 :1:2 
 ]
 "13516
-[s S1020 . 1 `uc 1 . 1 0 :5:0 
+[s S983 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 D_NOT_A 1 0 :1:5 
 ]
-[s S1023 . 1 `uc 1 BF 1 0 :1:0 
+[s S986 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -380,38 +385,38 @@ ECRITURE_SERVO_1 26
 `uc 1 CKE 1 0 :1:6 
 `uc 1 SMP 1 0 :1:7 
 ]
-[s S1032 . 1 `uc 1 . 1 0 :2:0 
+[s S995 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S1037 . 1 `uc 1 . 1 0 :2:0 
+[s S1000 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 A 1 0 :1:5 
 ]
-[s S1042 . 1 `uc 1 . 1 0 :2:0 
+[s S1005 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S1047 . 1 `uc 1 . 1 0 :2:0 
+[s S1010 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S1052 . 1 `uc 1 . 1 0 :2:0 
+[s S1015 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_WRITE 1 0 :1:2 
 ]
-[s S1055 . 1 `uc 1 . 1 0 :5:0 
+[s S1018 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_ADDRESS 1 0 :1:5 
 ]
-[s S1058 . 1 `uc 1 . 1 0 :2:0 
+[s S1021 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S1063 . 1 `uc 1 BF1 1 0 :1:0 
+[s S1026 . 1 `uc 1 BF1 1 0 :1:0 
 `uc 1 UA1 1 0 :1:1 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
@@ -420,38 +425,38 @@ ECRITURE_SERVO_1 26
 `uc 1 CKE1 1 0 :1:6 
 `uc 1 SMP1 1 0 :1:7 
 ]
-[s S1072 . 1 `uc 1 . 1 0 :2:0 
+[s S1035 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 START 1 0 :1:3 
 `uc 1 STOP 1 0 :1:4 
 `uc 1 DA1 1 0 :1:5 
 ]
-[s S1078 . 1 `uc 1 . 1 0 :2:0 
+[s S1041 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW 1 0 :1:2 
 `uc 1 START1 1 0 :1:3 
 `uc 1 STOP1 1 0 :1:4 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[s S1084 . 1 `uc 1 . 1 0 :2:0 
+[s S1047 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 RW1 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 I2C_DAT 1 0 :1:5 
 ]
-[s S1089 . 1 `uc 1 . 1 0 :2:0 
+[s S1052 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_W 1 0 :1:2 
 ]
-[s S1092 . 1 `uc 1 . 1 0 :5:0 
+[s S1055 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 NOT_A 1 0 :1:5 
 ]
-[u S1095 . 1 `S1017 1 . 1 0 `S1020 1 . 1 0 `S1023 1 . 1 0 `S1032 1 . 1 0 `S1037 1 . 1 0 `S1042 1 . 1 0 `S1047 1 . 1 0 `S1052 1 . 1 0 `S1055 1 . 1 0 `S1058 1 . 1 0 `S1063 1 . 1 0 `S1072 1 . 1 0 `S1078 1 . 1 0 `S1084 1 . 1 0 `S1089 1 . 1 0 `S1092 1 . 1 0 ]
-[v _SSP1STATbits SSP1STATbits `VES1095  1 e 1 @4039 ]
+[u S1058 . 1 `S980 1 . 1 0 `S983 1 . 1 0 `S986 1 . 1 0 `S995 1 . 1 0 `S1000 1 . 1 0 `S1005 1 . 1 0 `S1010 1 . 1 0 `S1015 1 . 1 0 `S1018 1 . 1 0 `S1021 1 . 1 0 `S1026 1 . 1 0 `S1035 1 . 1 0 `S1041 1 . 1 0 `S1047 1 . 1 0 `S1052 1 . 1 0 `S1055 1 . 1 0 ]
+[v _SSP1STATbits SSP1STATbits `VES1058  1 e 1 @4039 ]
 "14039
 [v _SSP1ADD SSP1ADD `VEuc  1 e 1 @4040 ]
 "14292
 [v _SSP1BUF SSP1BUF `VEuc  1 e 1 @4041 ]
 "14345
 [v _SSP1MSK SSP1MSK `VEuc  1 e 1 @4042 ]
-[s S534 . 1 `uc 1 DHEN 1 0 :1:0 
+[s S500 . 1 `uc 1 DHEN 1 0 :1:0 
 `uc 1 AHEN 1 0 :1:1 
 `uc 1 SBCDE 1 0 :1:2 
 `uc 1 SDAHT 1 0 :1:3 
@@ -461,20 +466,20 @@ ECRITURE_SERVO_1 26
 `uc 1 ACKTIM 1 0 :1:7 
 ]
 "14504
-[u S543 . 1 `S534 1 . 1 0 ]
-[v _SSP1CON3bits SSP1CON3bits `VES543  1 e 1 @4043 ]
-[s S374 . 1 `uc 1 . 1 0 :2:0 
+[u S509 . 1 `S500 1 . 1 0 ]
+[v _SSP1CON3bits SSP1CON3bits `VES509  1 e 1 @4043 ]
+[s S342 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_T1SYNC 1 0 :1:2 
 ]
 "14730
-[s S377 . 1 `uc 1 TMR1ON 1 0 :1:0 
+[s S345 . 1 `uc 1 TMR1ON 1 0 :1:0 
 `uc 1 T1RD16 1 0 :1:1 
 `uc 1 nT1SYNC 1 0 :1:2 
 `uc 1 T1SOSCEN 1 0 :1:3 
 `uc 1 T1CKPS 1 0 :2:4 
 `uc 1 TMR1CS 1 0 :2:6 
 ]
-[s S384 . 1 `uc 1 . 1 0 :1:0 
+[s S352 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RD16 1 0 :1:1 
 `uc 1 T1SYNC 1 0 :1:2 
 `uc 1 T1OSCEN 1 0 :1:3 
@@ -483,27 +488,27 @@ ECRITURE_SERVO_1 26
 `uc 1 TMR1CS0 1 0 :1:6 
 `uc 1 TMR1CS1 1 0 :1:7 
 ]
-[s S393 . 1 `uc 1 . 1 0 :3:0 
+[s S361 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SOSCEN 1 0 :1:3 
 ]
-[u S396 . 1 `S374 1 . 1 0 `S377 1 . 1 0 `S384 1 . 1 0 `S393 1 . 1 0 ]
-[v _T1CONbits T1CONbits `VES396  1 e 1 @4045 ]
-[s S97 . 1 `uc 1 NOT_BOR 1 0 :1:0 
+[u S364 . 1 `S342 1 . 1 0 `S345 1 . 1 0 `S352 1 . 1 0 `S361 1 . 1 0 ]
+[v _T1CONbits T1CONbits `VES364  1 e 1 @4045 ]
+[s S65 . 1 `uc 1 NOT_BOR 1 0 :1:0 
 ]
 "14896
-[s S99 . 1 `uc 1 . 1 0 :1:0 
+[s S67 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_POR 1 0 :1:1 
 ]
-[s S102 . 1 `uc 1 . 1 0 :2:0 
+[s S70 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_PD 1 0 :1:2 
 ]
-[s S105 . 1 `uc 1 . 1 0 :3:0 
+[s S73 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 NOT_TO 1 0 :1:3 
 ]
-[s S108 . 1 `uc 1 . 1 0 :4:0 
+[s S76 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 NOT_RI 1 0 :1:4 
 ]
-[s S111 . 1 `uc 1 nBOR 1 0 :1:0 
+[s S79 . 1 `uc 1 nBOR 1 0 :1:0 
 `uc 1 nPOR 1 0 :1:1 
 `uc 1 nPD 1 0 :1:2 
 `uc 1 nTO 1 0 :1:3 
@@ -512,32 +517,15 @@ ECRITURE_SERVO_1 26
 `uc 1 SBOREN 1 0 :1:6 
 `uc 1 IPEN 1 0 :1:7 
 ]
-[s S120 . 1 `uc 1 BOR 1 0 :1:0 
+[s S88 . 1 `uc 1 BOR 1 0 :1:0 
 `uc 1 POR 1 0 :1:1 
 `uc 1 PD 1 0 :1:2 
 `uc 1 TO 1 0 :1:3 
 `uc 1 RI 1 0 :1:4 
 ]
-[u S126 . 1 `S97 1 . 1 0 `S99 1 . 1 0 `S102 1 . 1 0 `S105 1 . 1 0 `S108 1 . 1 0 `S111 1 . 1 0 `S120 1 . 1 0 ]
-[v _RCONbits RCONbits `VES126  1 e 1 @4048 ]
-[s S24 . 1 `uc 1 SCS 1 0 :2:0 
-`uc 1 HFIOFS 1 0 :1:2 
-`uc 1 OSTS 1 0 :1:3 
-`uc 1 IRCF 1 0 :3:4 
-`uc 1 IDLEN 1 0 :1:7 
-]
-"15091
-[s S30 . 1 `uc 1 SCS0 1 0 :1:0 
-`uc 1 SCS1 1 0 :1:1 
-`uc 1 IOFS 1 0 :1:2 
-`uc 1 . 1 0 :1:3 
-`uc 1 IRCF0 1 0 :1:4 
-`uc 1 IRCF1 1 0 :1:5 
-`uc 1 IRCF2 1 0 :1:6 
-]
-[u S38 . 1 `S24 1 . 1 0 `S30 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES38  1 e 1 @4051 ]
-[s S164 . 1 `uc 1 RBIF 1 0 :1:0 
+[u S94 . 1 `S65 1 . 1 0 `S67 1 . 1 0 `S70 1 . 1 0 `S73 1 . 1 0 `S76 1 . 1 0 `S79 1 . 1 0 `S88 1 . 1 0 ]
+[v _RCONbits RCONbits `VES94  1 e 1 @4048 ]
+[s S132 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -547,7 +535,7 @@ ECRITURE_SERVO_1 26
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "15946
-[s S173 . 1 `uc 1 . 1 0 :1:0 
+[s S141 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -556,33 +544,33 @@ ECRITURE_SERVO_1 26
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S182 . 1 `uc 1 . 1 0 :6:0 
+[s S150 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S186 . 1 `S164 1 . 1 0 `S173 1 . 1 0 `S182 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES186  1 e 1 @4082 ]
-[s S882 . 14 `[10]uc 1 file 10 0 `uc 1 fileEntree 1 10 `uc 1 fileSortie 1 11 `uc 1 fileVide 1 12 `uc 1 filePleine 1 13 ]
+[u S154 . 1 `S132 1 . 1 0 `S141 1 . 1 0 `S150 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES154  1 e 1 @4082 ]
+[s S847 . 14 `[10]uc 1 file 10 0 `uc 1 fileEntree 1 10 `uc 1 fileSortie 1 11 `uc 1 fileVide 1 12 `uc 1 filePleine 1 13 ]
 "5 C:\Users\Ritier\Documents\sonar-pic18f-srf05.X\i2c.c
-[v _fileEmission fileEmission `S882  1 e 14 0 ]
+[v _fileEmission fileEmission `S847  1 e 14 0 ]
 "37
-[v _etatMaitre etatMaitre `E6668  1 s 1 etatMaitre ]
+[v _etatMaitre etatMaitre `E6666  1 s 1 etatMaitre ]
 "60
 [v _rappelCommande rappelCommande `*.37(v  1 s 2 rappelCommande ]
 "134
-[v _i2cValeursExposees i2cValeursExposees `[4]uc  1 e 4 0 ]
+[v _i2cValeursExposees i2cValeursExposees `[1]uc  1 e 1 0 ]
 "8 C:\Users\Ritier\Documents\sonar-pic18f-srf05.X\main.c
 [v _temp temp `i  1 s 2 temp ]
 "36
-[v _trigger trigger `E6672  1 e 1 0 ]
+[v _trigger trigger `E6667  1 e 1 0 ]
 "38
 [v _capture capture `ui  1 s 2 capture ]
 "39
-[v _distance distance `ui  1 e 2 0 ]
-"182
+[v _distance distance `uc  1 e 1 0 ]
+"185
 [v _main main `(v  1 e 1 0 ]
 {
-"188
+"192
 } 0
 "43
 [v _initialisationHardware initialisationHardware `(v  1 e 1 0 ]
@@ -597,26 +585,87 @@ ECRITURE_SERVO_1 26
 "57 C:\Users\Ritier\Documents\sonar-pic18f-srf05.X\file.c
 [v _fileReinitialise fileReinitialise `(v  1 e 1 0 ]
 {
-[s S882 . 14 `[10]uc 1 file 10 0 `uc 1 fileEntree 1 10 `uc 1 fileSortie 1 11 `uc 1 fileVide 1 12 `uc 1 filePleine 1 13 ]
-[v fileReinitialise@file file `*.39S882  1 p 2 21 ]
+[s S847 . 14 `[10]uc 1 file 10 0 `uc 1 fileEntree 1 10 `uc 1 fileSortie 1 11 `uc 1 fileVide 1 12 `uc 1 filePleine 1 13 ]
+[v fileReinitialise@file file `*.39S847  1 p 2 28 ]
 "62
 } 0
 "70 C:\Users\Ritier\Documents\sonar-pic18f-srf05.X\i2c.c
 [v _i2cRappelCommande i2cRappelCommande `(v  1 e 1 0 ]
 {
-[v i2cRappelCommande@r r `*.37(v  1 p 2 21 ]
+[v i2cRappelCommande@r r `*.37(v  1 p 2 28 ]
 "72
+} 0
+"153
+[v _i2cEsclave i2cEsclave `(v  1 e 1 0 ]
+{
+"154
+[v i2cEsclave@adresse adresse `uc  1 s 1 adresse ]
+"185
+} 0
+"127
+[v _convertitEnAdresseLocale convertitEnAdresseLocale `(uc  1 e 1 0 ]
+{
+[v convertitEnAdresseLocale@adresse adresse `uc  1 a 1 wreg ]
+[v convertitEnAdresseLocale@adresse adresse `uc  1 a 1 wreg ]
+[v convertitEnAdresseLocale@adresse adresse `uc  1 a 1 28 ]
+"131
+} 0
+"165 C:\Users\Ritier\Documents\sonar-pic18f-srf05.X\main.c
+[v _CompleteCapture CompleteCapture `(v  1 e 1 0 ]
+{
+[v CompleteCapture@instant instant `ui  1 p 2 35 ]
+"183
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwdiv@quotient quotient `ui  1 a 2 32 ]
+"12
+[v ___lwdiv@counter counter `uc  1 a 1 34 ]
+"8
+[v ___lwdiv@dividend dividend `ui  1 p 2 28 ]
+[v ___lwdiv@divisor divisor `ui  1 p 2 30 ]
+"31
 } 0
 "115 C:\Users\Ritier\Documents\sonar-pic18f-srf05.X\main.c
 [v _interruptions interruptions `II(v  1 e 1 0 ]
 {
-"146
-[v interruptions@val val `i  1 a 2 19 ]
-"160
+"140
+[v interruptions@val val `i  1 a 2 26 ]
+"163
 } 0
-"162
-[v _CompleteCapture CompleteCapture `(v  1 e 1 0 ]
+"70 C:\Users\Ritier\Documents\sonar-pic18f-srf05.X\i2c.c
+[v i2_i2cRappelCommande i2cRappelCommande `(v  1 e 1 0 ]
 {
-[v CompleteCapture@instant instant `ui  1 p 2 0 ]
-"180
+[v i2i2cRappelCommande@r r `*.37(v  1 p 2 0 ]
+"72
+} 0
+"153
+[v i2_i2cEsclave i2cEsclave `(v  1 e 1 0 ]
+{
+"185
+} 0
+"127
+[v i2_convertitEnAdresseLocale convertitEnAdresseLocale `(uc  1 e 1 0 ]
+{
+[v i2convertitEnAdresseLocale@adresse adresse `uc  1 a 1 wreg ]
+[v i2convertitEnAdresseLocale@adresse adresse `uc  1 a 1 wreg ]
+[v i2convertitEnAdresseLocale@adresse adresse `uc  1 a 1 0 ]
+"131
+} 0
+"165 C:\Users\Ritier\Documents\sonar-pic18f-srf05.X\main.c
+[v i2_CompleteCapture CompleteCapture `(v  1 e 1 0 ]
+{
+[v i2CompleteCapture@instant instant `ui  1 p 2 7 ]
+"183
+} 0
+"8 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+[v i2___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+[v i2___lwdiv@quotient __lwdiv `ui  1 a 2 4 ]
+[v i2___lwdiv@counter __lwdiv `uc  1 a 1 6 ]
+[v i2___lwdiv@dividend dividend `ui  1 p 2 0 ]
+[v i2___lwdiv@divisor divisor `ui  1 p 2 2 ]
+"31
 } 0

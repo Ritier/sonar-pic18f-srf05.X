@@ -1,19 +1,8 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "36 main.c
-[c E6672 0 1 .. ]
-[n E6672 . TRIGGER_ON TRIGGER_OFF  ]
-"15074 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f25k22.h
-[s S733 :2 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 ]
-[n S733 . SCS HFIOFS OSTS IRCF IDLEN ]
-"15081
-[s S734 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S734 . SCS0 SCS1 IOFS . IRCF0 IRCF1 IRCF2 ]
-"15073
-[u S732 `S733 1 `S734 1 ]
-[n S732 . . . ]
-"15091
-[v _OSCCONbits `VS732 ~T0 @X0 0 e@4051 ]
-"49
+[c E6667 0 1 .. ]
+[n E6667 . TRIGGER_ON TRIGGER_OFF  ]
+"49 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f25k22.h
 [v _ANSELA `Vuc ~T0 @X0 0 e@3896 ]
 "7506
 [s S375 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -197,8 +186,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "14039
 [v _SSP1ADD `Vuc ~T0 @X0 0 e@4040 ]
 "102 main.c
-[c E6628 25 24 26 .. ]
-[n E6628 . LECTURE_POTENTIOMETRE ECRITURE_SERVO_0 ECRITURE_SERVO_1  ]
+[c E6625 25 .. ]
+[n E6625 . LECTURE_DISTANCE  ]
 "14345 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic18f25k22.h
 [v _SSP1MSK `Vuc ~T0 @X0 0 e@4042 ]
 "14493
@@ -276,12 +265,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _CCPR5 `Vus ~T0 @X0 0 e@3925 ]
 "41 main.c
 [v _CompleteCapture `(v ~T0 @X0 0 ef1`ui ]
+"25 i2c.h
+[v _i2cEsclave `(v ~T0 @X0 0 ef ]
+[v F6633 `(v ~T0 @X0 0 tf2`uc`uc ]
+"18
+[v _i2cRappelCommande `(v ~T0 @X0 0 ef1`*F6633 ]
 [p mainexit ]
-"29 i2c.h
+"27
 [v _i2cReinitialise `(v ~T0 @X0 0 ef ]
-[v F6638 `(v ~T0 @X0 0 tf2`uc`uc ]
-"20
-[v _i2cRappelCommande `(v ~T0 @X0 0 ef1`*F6638 ]
 "7 main.c
 [v _pulse `i ~T0 @X0 1 s ]
 [i _pulse
@@ -6567,26 +6558,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 161: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 163: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 165: extern __nonreentrant void _delay3(unsigned char);
-[; ;esclave.h: 4: void esclaveInterruptions();
-[; ;esclave.h: 5: void esclaveMain(void);
 [; ;i2c.h: 8: typedef enum {
-[; ;i2c.h: 9: LECTURE_POTENTIOMETRE = 0b00011001,
-[; ;i2c.h: 10: ECRITURE_SERVO_0 = 0b00011000,
-[; ;i2c.h: 11: ECRITURE_SERVO_1 = 0b00011010
-[; ;i2c.h: 12: } I2cAdresse;
-[; ;i2c.h: 14: typedef struct {
-[; ;i2c.h: 15: I2cAdresse adresse;
-[; ;i2c.h: 16: unsigned char valeur;
-[; ;i2c.h: 17: } I2cCommande;
-[; ;i2c.h: 19: typedef void (*I2cRappelCommande)(unsigned char, unsigned char);
-[; ;i2c.h: 20: void i2cRappelCommande(I2cRappelCommande r);
-[; ;i2c.h: 21: void i2cExposeValeur(unsigned char adresse, unsigned char valeur);
-[; ;i2c.h: 22: void i2cPrepareCommandePourEmission(I2cAdresse adresse, unsigned char valeur);
-[; ;i2c.h: 23: unsigned char i2cDonneesDisponiblesPourEmission();
-[; ;i2c.h: 24: unsigned char i2cRecupereCaracterePourEmission();
-[; ;i2c.h: 26: void i2cMaitre();
-[; ;i2c.h: 27: void i2cEsclave();
-[; ;i2c.h: 29: void i2cReinitialise();
+[; ;i2c.h: 9: LECTURE_DISTANCE = 0b00011001,
+[; ;i2c.h: 10: } I2cAdresse;
+[; ;i2c.h: 12: typedef struct {
+[; ;i2c.h: 13: I2cAdresse adresse;
+[; ;i2c.h: 14: unsigned char valeur;
+[; ;i2c.h: 15: } I2cCommande;
+[; ;i2c.h: 17: typedef void (*I2cRappelCommande)(unsigned char, unsigned char);
+[; ;i2c.h: 18: void i2cRappelCommande(I2cRappelCommande r);
+[; ;i2c.h: 19: void i2cExposeValeur(unsigned char adresse, unsigned char valeur);
+[; ;i2c.h: 20: void i2cPrepareCommandePourEmission(I2cAdresse adresse, unsigned char valeur);
+[; ;i2c.h: 21: unsigned char i2cDonneesDisponiblesPourEmission();
+[; ;i2c.h: 22: unsigned char i2cRecupereCaracterePourEmission();
+[; ;i2c.h: 24: void i2cMaitre();
+[; ;i2c.h: 25: void i2cEsclave();
+[; ;i2c.h: 27: void i2cReinitialise();
 [; ;file.h: 6: typedef struct {
 [; ;file.h: 8: char file[10];
 [; ;file.h: 11: unsigned char fileEntree;
@@ -6616,14 +6603,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 33: TRIGGER_OFF
 [; ;main.c: 34: } Trigger;
 "36
-[v _trigger `E6672 ~T0 @X0 1 e ]
+[v _trigger `E6667 ~T0 @X0 1 e ]
 [; ;main.c: 36: Trigger trigger;
 "38
 [v _capture `ui ~T0 @X0 1 s ]
 [; ;main.c: 38: static unsigned int capture;
 "39
-[v _distance `ui ~T0 @X0 1 e ]
-[; ;main.c: 39: unsigned int distance;
+[v _distance `uc ~T0 @X0 1 e ]
+[; ;main.c: 39: unsigned char distance;
 [; ;main.c: 41: void CompleteCapture(unsigned int instant);
 "43
 [v _initialisationHardware `(v ~T0 @X0 1 ef ]
@@ -6631,12 +6618,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 43: void initialisationHardware(){
 [e :U _initialisationHardware ]
 [f ]
-[; ;main.c: 45: OSCCONbits.IRCF = 0b111;
-"45
-[e = . . _OSCCONbits 0 3 -> -> 7 `i `uc ]
-[; ;main.c: 46: OSCCONbits.SCS = 11;
-"46
-[e = . . _OSCCONbits 0 0 -> -> 11 `i `uc ]
 [; ;main.c: 49: ANSELA=0;
 "49
 [e = _ANSELA -> -> 0 `i `uc ]
@@ -6727,12 +6708,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 100: SSP1CON1bits.SSPEN = 1;
 "100
 [e = . . _SSP1CON1bits 0 2 -> -> 1 `i `uc ]
-[; ;main.c: 102: SSP1ADD = ECRITURE_SERVO_0;
+[; ;main.c: 102: SSP1ADD = LECTURE_DISTANCE;
 "102
-[e = _SSP1ADD -> . `E6628 1 `uc ]
-[; ;main.c: 103: SSP1MSK = 0b11111000;
+[e = _SSP1ADD -> . `E6625 0 `uc ]
+[; ;main.c: 103: SSP1MSK = 0b0001100;
 "103
-[e = _SSP1MSK -> -> 248 `i `uc ]
+[e = _SSP1MSK -> -> 12 `i `uc ]
 [; ;main.c: 104: SSP1CON1bits.SSPM = 0b1110;
 "104
 [e = . . _SSP1CON1bits 0 0 -> -> 14 `i `uc ]
@@ -6755,248 +6736,265 @@ Version 3.2 HI-TECH Software Intermediate Code
 "113
 [e :UE 823 ]
 }
-[v F6683 `(v ~T0 @X0 1 tf ]
+[v F6678 `(v ~T0 @X0 1 tf ]
 "115
-[v _interruptions `IF6683 ~T0 @X0 1 e ]
+[v _interruptions `IF6678 ~T0 @X0 1 e ]
 "116
 {
 [; ;main.c: 115: void interrupt interruptions()
 [; ;main.c: 116: {
 [e :U _interruptions ]
 [f ]
-[; ;main.c: 123: if (PIR1bits.TMR2IF) {
-"123
+[; ;main.c: 117: if (PIR1bits.TMR2IF) {
+"117
 [e $ ! != -> . . _PIR1bits 0 1 `i -> -> -> 0 `i `Vuc `i 825  ]
 {
-[; ;main.c: 124: switch (trigger){
-"124
+[; ;main.c: 118: switch (trigger){
+"118
 [e $U 827  ]
 {
-[; ;main.c: 125: case TRIGGER_ON:
-"125
+[; ;main.c: 119: case TRIGGER_ON:
+"119
 [e :U 828 ]
-[; ;main.c: 126: PR2 = 255;
-"126
+[; ;main.c: 120: PR2 = 255;
+"120
 [e = _PR2 -> -> 255 `i `uc ]
-[; ;main.c: 127: PORTAbits.RA5 = 0;
-"127
+[; ;main.c: 121: PORTAbits.RA5 = 0;
+"121
 [e = . . _PORTAbits 0 5 -> -> 0 `i `uc ]
-[; ;main.c: 128: temp ++;
-"128
+[; ;main.c: 122: temp ++;
+"122
 [e ++ _temp -> 1 `i ]
-[; ;main.c: 129: if (temp < 600){
-"129
+[; ;main.c: 123: if (temp < 600){
+"123
 [e $ ! < _temp -> 600 `i 829  ]
 {
-[; ;main.c: 130: temp ++;
-"130
+[; ;main.c: 124: temp ++;
+"124
 [e ++ _temp -> 1 `i ]
-"131
+"125
 }
-[; ;main.c: 131: } else {
+[; ;main.c: 125: } else {
 [e $U 830  ]
 [e :U 829 ]
 {
-[; ;main.c: 132: trigger = TRIGGER_OFF;
-"132
-[e = _trigger . `E6672 1 ]
-[; ;main.c: 133: temp = 0;
-"133
+[; ;main.c: 126: trigger = TRIGGER_OFF;
+"126
+[e = _trigger . `E6667 1 ]
+[; ;main.c: 127: temp = 0;
+"127
 [e = _temp -> 0 `i ]
-"134
+"128
 }
 [e :U 830 ]
-[; ;main.c: 134: }
-[; ;main.c: 135: break;
-"135
+[; ;main.c: 128: }
+[; ;main.c: 129: break;
+"129
 [e $U 826  ]
-[; ;main.c: 136: case TRIGGER_OFF:
-"136
+[; ;main.c: 130: case TRIGGER_OFF:
+"130
 [e :U 831 ]
-[; ;main.c: 137: PR2 = 3;
-"137
+[; ;main.c: 131: PR2 = 3;
+"131
 [e = _PR2 -> -> 3 `i `uc ]
-[; ;main.c: 138: PORTAbits.RA5 = 1;
-"138
+[; ;main.c: 132: PORTAbits.RA5 = 1;
+"132
 [e = . . _PORTAbits 0 5 -> -> 1 `i `uc ]
-[; ;main.c: 139: trigger = TRIGGER_ON;
-"139
-[e = _trigger . `E6672 0 ]
-[; ;main.c: 140: break;
-"140
+[; ;main.c: 133: trigger = TRIGGER_ON;
+"133
+[e = _trigger . `E6667 0 ]
+[; ;main.c: 134: break;
+"134
 [e $U 826  ]
-"141
+"135
 }
-[; ;main.c: 141: }
+[; ;main.c: 135: }
 [e $U 826  ]
-"124
+"118
 [e :U 827 ]
-[e [\ _trigger , $ . `E6672 0 828
- , $ . `E6672 1 831
+[e [\ _trigger , $ . `E6667 0 828
+ , $ . `E6667 1 831
  826 ]
-"141
+"135
 [e :U 826 ]
-[; ;main.c: 142: PIR1bits.TMR2IF = 0;
-"142
+[; ;main.c: 136: PIR1bits.TMR2IF = 0;
+"136
 [e = . . _PIR1bits 0 1 -> -> 0 `i `uc ]
-"143
+"137
 }
 [e :U 825 ]
-[; ;main.c: 143: }
-[; ;main.c: 145: if (PIR1bits.TMR1IF) {
-"145
+[; ;main.c: 137: }
+[; ;main.c: 139: if (PIR1bits.TMR1IF) {
+"139
 [e $ ! != -> . . _PIR1bits 0 0 `i -> -> -> 0 `i `Vuc `i 832  ]
 {
-"146
+"140
 [v _val `i ~T0 @X0 1 a ]
-[; ;main.c: 146: int val;
-[; ;main.c: 147: val=0;
-"147
+[; ;main.c: 140: int val;
+[; ;main.c: 141: val=0;
+"141
 [e = _val -> 0 `i ]
-"148
+"142
 }
 [e :U 832 ]
-[; ;main.c: 148: }
-[; ;main.c: 150: if (PIR4bits.CCP5IF) {
-"150
+[; ;main.c: 142: }
+[; ;main.c: 144: if (PIR4bits.CCP5IF) {
+"144
 [e $ ! != -> . . _PIR4bits 0 2 `i -> -> -> 0 `i `Vuc `i 833  ]
 {
-[; ;main.c: 151: if (PORTAbits.RA4) {
-"151
+[; ;main.c: 145: if (PORTAbits.RA4) {
+"145
 [e $ ! != -> . . _PORTAbits 0 4 `i -> -> -> 0 `i `Vuc `i 834  ]
 {
-[; ;main.c: 152: capture = CCPR5;
-"152
+[; ;main.c: 146: capture = CCPR5;
+"146
 [e = _capture -> _CCPR5 `ui ]
-[; ;main.c: 153: CCP5CONbits.CCP5M = 0b100;
-"153
+[; ;main.c: 147: CCP5CONbits.CCP5M = 0b100;
+"147
 [e = . . _CCP5CONbits 0 0 -> -> 4 `i `uc ]
-"154
+"148
 }
-[; ;main.c: 154: } else {
+[; ;main.c: 148: } else {
 [e $U 835  ]
 [e :U 834 ]
 {
-[; ;main.c: 155: CompleteCapture(CCPR5);
-"155
+[; ;main.c: 149: CompleteCapture(CCPR5);
+"149
 [e ( _CompleteCapture (1 -> _CCPR5 `ui ]
-[; ;main.c: 156: CCP5CONbits.CCP5M = 0b101;
-"156
+[; ;main.c: 150: CCP5CONbits.CCP5M = 0b101;
+"150
 [e = . . _CCP5CONbits 0 0 -> -> 5 `i `uc ]
-"157
+"151
 }
 [e :U 835 ]
-[; ;main.c: 157: }
-[; ;main.c: 158: PIR4bits.CCP5IF = 0;
-"158
+[; ;main.c: 151: }
+[; ;main.c: 152: PIR4bits.CCP5IF = 0;
+"152
 [e = . . _PIR4bits 0 2 -> -> 0 `i `uc ]
-"159
+"153
 }
 [e :U 833 ]
+[; ;main.c: 153: }
+[; ;main.c: 156: if (PIR1bits.SSP1IF) {
+"156
+[e $ ! != -> . . _PIR1bits 0 3 `i -> -> -> 0 `i `Vuc `i 836  ]
+{
+[; ;main.c: 157: i2cEsclave();
+"157
+[e ( _i2cEsclave ..  ]
+[; ;main.c: 158: i2cRappelCommande(CompleteCapture);
+"158
+[e ( _i2cRappelCommande (1 -> &U _CompleteCapture `*F6633 ]
+"159
+}
+[e :U 836 ]
 [; ;main.c: 159: }
-[; ;main.c: 160: }
-"160
+[; ;main.c: 163: }
+"163
 [e :UE 824 ]
 }
-"162
+"165
 [v _CompleteCapture `(v ~T0 @X0 1 ef1`ui ]
 {
-[; ;main.c: 162: void CompleteCapture(unsigned int instant) {
+[; ;main.c: 165: void CompleteCapture(unsigned int instant) {
 [e :U _CompleteCapture ]
 [v _instant `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;main.c: 163: if (instant >= capture){
-"163
-[e $ ! >= _instant _capture 837  ]
-{
-[; ;main.c: 164: capture = (instant - capture);
-"164
-[e = _capture - _instant _capture ]
-"165
-}
-[; ;main.c: 165: } else {
-[e $U 838  ]
-[e :U 837 ]
-{
-[; ;main.c: 166: capture = (65536 - capture);
+[; ;main.c: 166: if (instant >= capture){
 "166
-[e = _capture -> - -> 65536 `l -> _capture `l `ui ]
-[; ;main.c: 167: capture = (instant + capture);
+[e $ ! >= _instant _capture 838  ]
+{
+[; ;main.c: 167: capture = (instant - capture);
 "167
-[e = _capture + _instant _capture ]
+[e = _capture - _instant _capture ]
 "168
 }
+[; ;main.c: 168: } else {
+[e $U 839  ]
 [e :U 838 ]
-[; ;main.c: 168: }
-[; ;main.c: 169: distance = capture;
-"169
-[e = _distance _capture ]
-[; ;main.c: 170: if (distance > 15000){
-"170
-[e $ ! > _distance -> -> 15000 `i `ui 839  ]
 {
-[; ;main.c: 171: PORTAbits.RA3 = 1;
+[; ;main.c: 169: capture = (65536 - capture);
+"169
+[e = _capture -> - -> 65536 `l -> _capture `l `ui ]
+[; ;main.c: 170: capture = (instant + capture);
+"170
+[e = _capture + _instant _capture ]
 "171
-[e = . . _PORTAbits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 172: PORTAbits.RA2 = 1;
-"172
-[e = . . _PORTAbits 0 2 -> -> 1 `i `uc ]
-"173
 }
-[; ;main.c: 173: } else if (distance > 5000){
-[e $U 840  ]
 [e :U 839 ]
-[e $ ! > _distance -> -> 5000 `i `ui 841  ]
+[; ;main.c: 171: }
+[; ;main.c: 172: distance = (capture / 257);
+"172
+[e = _distance -> / _capture -> -> 257 `i `ui `uc ]
+[; ;main.c: 173: if (distance > 60){
+"173
+[e $ ! > -> _distance `i -> 60 `i 840  ]
 {
 [; ;main.c: 174: PORTAbits.RA3 = 1;
 "174
 [e = . . _PORTAbits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 175: PORTAbits.RA2 = 0;
+[; ;main.c: 175: PORTAbits.RA2 = 1;
 "175
-[e = . . _PORTAbits 0 2 -> -> 0 `i `uc ]
+[e = . . _PORTAbits 0 2 -> -> 1 `i `uc ]
 "176
 }
-[; ;main.c: 176: } else {
-[e $U 842  ]
-[e :U 841 ]
+[; ;main.c: 176: } else if (distance > 20){
+[e $U 841  ]
+[e :U 840 ]
+[e $ ! > -> _distance `i -> 20 `i 842  ]
 {
-[; ;main.c: 177: PORTAbits.RA3 = 0;
+[; ;main.c: 177: PORTAbits.RA3 = 1;
 "177
-[e = . . _PORTAbits 0 3 -> -> 0 `i `uc ]
+[e = . . _PORTAbits 0 3 -> -> 1 `i `uc ]
 [; ;main.c: 178: PORTAbits.RA2 = 0;
 "178
 [e = . . _PORTAbits 0 2 -> -> 0 `i `uc ]
 "179
 }
+[; ;main.c: 179: } else {
+[e $U 843  ]
 [e :U 842 ]
-[e :U 840 ]
-[; ;main.c: 179: }
-[; ;main.c: 180: }
+{
+[; ;main.c: 180: PORTAbits.RA3 = 0;
 "180
-[e :UE 836 ]
-}
+[e = . . _PORTAbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 181: PORTAbits.RA2 = 0;
+"181
+[e = . . _PORTAbits 0 2 -> -> 0 `i `uc ]
 "182
+}
+[e :U 843 ]
+[e :U 841 ]
+[; ;main.c: 182: }
+[; ;main.c: 183: }
+"183
+[e :UE 837 ]
+}
+"185
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 182: void main(void) {
+[; ;main.c: 185: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 184: initialisationHardware();
-"184
-[e ( _initialisationHardware ..  ]
-[; ;main.c: 185: i2cReinitialise();
-"185
-[e ( _i2cReinitialise ..  ]
-[; ;main.c: 186: i2cRappelCommande(CompleteCapture);
-"186
-[e ( _i2cRappelCommande (1 -> &U _CompleteCapture `*F6638 ]
-[; ;main.c: 187: while (1);
+[; ;main.c: 187: initialisationHardware();
 "187
-[e :U 845 ]
-[e :U 844 ]
-[e $U 845  ]
-[e :U 846 ]
-[; ;main.c: 188: }
+[e ( _initialisationHardware ..  ]
+[; ;main.c: 188: i2cReinitialise();
 "188
-[e :UE 843 ]
+[e ( _i2cReinitialise ..  ]
+[; ;main.c: 189: i2cEsclave();
+"189
+[e ( _i2cEsclave ..  ]
+[; ;main.c: 190: i2cRappelCommande(CompleteCapture);
+"190
+[e ( _i2cRappelCommande (1 -> &U _CompleteCapture `*F6633 ]
+[; ;main.c: 191: while (1) ;
+"191
+[e :U 846 ]
+[e :U 845 ]
+[e $U 846  ]
+[e :U 847 ]
+[; ;main.c: 192: }
+"192
+[e :UE 844 ]
 }
