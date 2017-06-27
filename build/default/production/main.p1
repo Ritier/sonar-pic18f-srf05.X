@@ -264,12 +264,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _CompleteCapture `(v ~T0 @X0 0 ef1`ui ]
 "26 i2c.h
 [v _i2cEsclave `(v ~T0 @X0 0 ef ]
-[v F6633 `(v ~T0 @X0 0 tf2`uc`uc ]
-"19
-[v _i2cRappelCommande `(v ~T0 @X0 0 ef1`*F6633 ]
+"20
+[v _i2cExposeValeur `(v ~T0 @X0 0 ef2`uc`uc ]
 [p mainexit ]
 "28
 [v _i2cReinitialise `(v ~T0 @X0 0 ef ]
+[v F6633 `(v ~T0 @X0 0 tf2`uc`uc ]
+"19
+[v _i2cRappelCommande `(v ~T0 @X0 0 ef1`*F6633 ]
 "7 main.c
 [v _pulse `i ~T0 @X0 1 s ]
 [i _pulse
@@ -6879,9 +6881,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 157: i2cEsclave();
 "157
 [e ( _i2cEsclave ..  ]
-[; ;main.c: 158: i2cRappelCommande(CompleteCapture);
-"158
-[e ( _i2cRappelCommande (1 -> &U _CompleteCapture `*F6633 ]
 "159
 }
 [e :U 836 ]
@@ -6910,9 +6909,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 839  ]
 [e :U 838 ]
 {
-[; ;main.c: 169: capture = (65536 - capture);
+[; ;main.c: 169: capture = (65535 - capture);
 "169
-[e = _capture -> - -> 65536 `l -> _capture `l `ui ]
+[e = _capture -> - -> 65535 `l -> _capture `l `ui ]
 [; ;main.c: 170: capture = (instant + capture);
 "170
 [e = _capture + _instant _capture ]
@@ -6920,78 +6919,81 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 839 ]
 [; ;main.c: 171: }
-[; ;main.c: 172: distance = (capture / 257);
-"172
-[e = _distance -> / _capture -> -> 257 `i `ui `uc ]
-[; ;main.c: 173: if (distance > 60){
+[; ;main.c: 173: distance = (capture / 13);
 "173
-[e $ ! > -> _distance `i -> 60 `i 840  ]
-{
-[; ;main.c: 174: PORTAbits.RA3 = 1;
+[e = _distance -> / _capture -> -> 13 `i `ui `uc ]
+[; ;main.c: 174: i2cExposeValeur(1, distance);
 "174
-[e = . . _PORTAbits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 175: PORTAbits.RA2 = 1;
-"175
-[e = . . _PORTAbits 0 2 -> -> 1 `i `uc ]
+[e ( _i2cExposeValeur (2 , -> -> 1 `i `uc _distance ]
+[; ;main.c: 176: if (distance > 60){
 "176
-}
-[; ;main.c: 176: } else if (distance > 20){
-[e $U 841  ]
-[e :U 840 ]
-[e $ ! > -> _distance `i -> 20 `i 842  ]
+[e $ ! > -> _distance `i -> 60 `i 840  ]
 {
 [; ;main.c: 177: PORTAbits.RA3 = 1;
 "177
 [e = . . _PORTAbits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 178: PORTAbits.RA2 = 0;
+[; ;main.c: 178: PORTAbits.RA2 = 1;
 "178
-[e = . . _PORTAbits 0 2 -> -> 0 `i `uc ]
+[e = . . _PORTAbits 0 2 -> -> 1 `i `uc ]
 "179
 }
-[; ;main.c: 179: } else {
-[e $U 843  ]
-[e :U 842 ]
+[; ;main.c: 179: } else if (distance > 20){
+[e $U 841  ]
+[e :U 840 ]
+[e $ ! > -> _distance `i -> 20 `i 842  ]
 {
-[; ;main.c: 180: PORTAbits.RA3 = 0;
+[; ;main.c: 180: PORTAbits.RA3 = 1;
 "180
-[e = . . _PORTAbits 0 3 -> -> 0 `i `uc ]
+[e = . . _PORTAbits 0 3 -> -> 1 `i `uc ]
 [; ;main.c: 181: PORTAbits.RA2 = 0;
 "181
 [e = . . _PORTAbits 0 2 -> -> 0 `i `uc ]
 "182
 }
+[; ;main.c: 182: } else {
+[e $U 843  ]
+[e :U 842 ]
+{
+[; ;main.c: 183: PORTAbits.RA3 = 0;
+"183
+[e = . . _PORTAbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 184: PORTAbits.RA2 = 0;
+"184
+[e = . . _PORTAbits 0 2 -> -> 0 `i `uc ]
+"185
+}
 [e :U 843 ]
 [e :U 841 ]
-[; ;main.c: 182: }
-[; ;main.c: 183: }
-"183
+[; ;main.c: 185: }
+[; ;main.c: 186: }
+"186
 [e :UE 837 ]
 }
-"185
+"188
 [v _main `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 185: void main(void) {
+[; ;main.c: 188: void main(void) {
 [e :U _main ]
 [f ]
-[; ;main.c: 187: initialisationHardware();
-"187
-[e ( _initialisationHardware ..  ]
-[; ;main.c: 188: i2cReinitialise();
-"188
-[e ( _i2cReinitialise ..  ]
-[; ;main.c: 189: i2cEsclave();
-"189
-[e ( _i2cEsclave ..  ]
-[; ;main.c: 190: i2cRappelCommande(CompleteCapture);
+[; ;main.c: 190: initialisationHardware();
 "190
-[e ( _i2cRappelCommande (1 -> &U _CompleteCapture `*F6633 ]
-[; ;main.c: 191: while (1) ;
+[e ( _initialisationHardware ..  ]
+[; ;main.c: 191: i2cReinitialise();
 "191
+[e ( _i2cReinitialise ..  ]
+[; ;main.c: 192: i2cEsclave();
+"192
+[e ( _i2cEsclave ..  ]
+[; ;main.c: 193: i2cRappelCommande(CompleteCapture);
+"193
+[e ( _i2cRappelCommande (1 -> &U _CompleteCapture `*F6633 ]
+[; ;main.c: 194: while (1) ;
+"194
 [e :U 846 ]
 [e :U 845 ]
 [e $U 846  ]
 [e :U 847 ]
-[; ;main.c: 192: }
-"192
+[; ;main.c: 195: }
+"195
 [e :UE 844 ]
 }

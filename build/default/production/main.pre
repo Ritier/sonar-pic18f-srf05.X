@@ -8244,7 +8244,7 @@ PIR4bits.CCP5IF = 0;
 
 if (PIR1bits.SSP1IF) {
 i2cEsclave();
-i2cRappelCommande(CompleteCapture);
+
 }
 
 
@@ -8255,10 +8255,13 @@ void CompleteCapture(unsigned int instant) {
 if (instant >= capture){
 capture = (instant - capture);
 } else {
-capture = (65536 - capture);
+capture = (65535 - capture);
 capture = (instant + capture);
 }
-distance = (capture / 257);
+
+distance = (capture / 13);
+i2cExposeValeur(1, distance);
+
 if (distance > 60){
 PORTAbits.RA3 = 1;
 PORTAbits.RA2 = 1;

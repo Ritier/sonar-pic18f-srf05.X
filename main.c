@@ -155,7 +155,7 @@ void interrupt interruptions()
 	// Interruptions si transmission I2C
 	 if (PIR1bits.SSP1IF) {
         i2cEsclave();
-        i2cRappelCommande(CompleteCapture);
+        //i2cRappelCommande(CompleteCapture);         //???
     }
 	
 	
@@ -166,10 +166,13 @@ void CompleteCapture(unsigned int instant) {
 	   if (instant >= capture){
            capture = (instant - capture); 
         } else {
-            capture = (65536 - capture);
+            capture = (65535 - capture);            // correction overflow
             capture = (instant + capture); 
         }       
-        distance = (capture / 257);
+        
+        distance = (capture / 13);
+        i2cExposeValeur(1, distance);       // Ajouté par Roland
+        
         if (distance > 60){
             PORTAbits.RA3 = 1;
             PORTAbits.RA2 = 1;
@@ -187,6 +190,6 @@ void main(void) {
     initialisationHardware();
     i2cReinitialise();
     i2cEsclave();
-    i2cRappelCommande(CompleteCapture);
+    i2cRappelCommande(CompleteCapture);     //???
     while (1) ;
 }
