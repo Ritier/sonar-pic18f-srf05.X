@@ -269,9 +269,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p mainexit ]
 "28
 [v _i2cReinitialise `(v ~T0 @X0 0 ef ]
-[v F6633 `(v ~T0 @X0 0 tf2`uc`uc ]
-"19
-[v _i2cRappelCommande `(v ~T0 @X0 0 ef1`*F6633 ]
 "7 main.c
 [v _pulse `i ~T0 @X0 1 s ]
 [i _pulse
@@ -6608,8 +6605,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _capture `ui ~T0 @X0 1 s ]
 [; ;main.c: 38: static unsigned int capture;
 "39
-[v _distance `uc ~T0 @X0 1 e ]
-[; ;main.c: 39: unsigned char distance;
+[v _distance `uc ~T0 @X0 1 s ]
+[; ;main.c: 39: static unsigned char distance;
 [; ;main.c: 41: void CompleteCapture(unsigned int instant);
 "43
 [v _initialisationHardware `(v ~T0 @X0 1 ef ]
@@ -6922,49 +6919,49 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 173: distance = (capture / 13);
 "173
 [e = _distance -> / _capture -> -> 13 `i `ui `uc ]
-[; ;main.c: 174: i2cExposeValeur(1, distance);
+[; ;main.c: 174: i2cExposeValeur(0, distance);
 "174
-[e ( _i2cExposeValeur (2 , -> -> 1 `i `uc _distance ]
-[; ;main.c: 176: if (distance > 60){
-"176
+[e ( _i2cExposeValeur (2 , -> -> 0 `i `uc _distance ]
+[; ;main.c: 175: if (distance > 60){
+"175
 [e $ ! > -> _distance `i -> 60 `i 840  ]
 {
-[; ;main.c: 177: PORTAbits.RA3 = 1;
-"177
+[; ;main.c: 176: PORTAbits.RA3 = 1;
+"176
 [e = . . _PORTAbits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 178: PORTAbits.RA2 = 1;
-"178
+[; ;main.c: 177: PORTAbits.RA2 = 1;
+"177
 [e = . . _PORTAbits 0 2 -> -> 1 `i `uc ]
-"179
+"178
 }
-[; ;main.c: 179: } else if (distance > 20){
+[; ;main.c: 178: } else if (distance > 20){
 [e $U 841  ]
 [e :U 840 ]
 [e $ ! > -> _distance `i -> 20 `i 842  ]
 {
-[; ;main.c: 180: PORTAbits.RA3 = 1;
-"180
+[; ;main.c: 179: PORTAbits.RA3 = 1;
+"179
 [e = . . _PORTAbits 0 3 -> -> 1 `i `uc ]
-[; ;main.c: 181: PORTAbits.RA2 = 0;
-"181
+[; ;main.c: 180: PORTAbits.RA2 = 0;
+"180
 [e = . . _PORTAbits 0 2 -> -> 0 `i `uc ]
-"182
+"181
 }
-[; ;main.c: 182: } else {
+[; ;main.c: 181: } else {
 [e $U 843  ]
 [e :U 842 ]
 {
-[; ;main.c: 183: PORTAbits.RA3 = 0;
-"183
+[; ;main.c: 182: PORTAbits.RA3 = 0;
+"182
 [e = . . _PORTAbits 0 3 -> -> 0 `i `uc ]
-[; ;main.c: 184: PORTAbits.RA2 = 0;
-"184
+[; ;main.c: 183: PORTAbits.RA2 = 0;
+"183
 [e = . . _PORTAbits 0 2 -> -> 0 `i `uc ]
-"185
+"184
 }
 [e :U 843 ]
 [e :U 841 ]
-[; ;main.c: 185: }
+[; ;main.c: 184: }
 [; ;main.c: 186: }
 "186
 [e :UE 837 ]
@@ -6984,16 +6981,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 192: i2cEsclave();
 "192
 [e ( _i2cEsclave ..  ]
-[; ;main.c: 193: i2cRappelCommande(CompleteCapture);
-"193
-[e ( _i2cRappelCommande (1 -> &U _CompleteCapture `*F6633 ]
-[; ;main.c: 194: while (1) ;
-"194
+[; ;main.c: 195: while (1){
+"195
 [e :U 846 ]
+{
+"197
+}
 [e :U 845 ]
+"195
 [e $U 846  ]
 [e :U 847 ]
-[; ;main.c: 195: }
-"195
+[; ;main.c: 197: }
+[; ;main.c: 199: }
+"199
 [e :UE 844 ]
 }

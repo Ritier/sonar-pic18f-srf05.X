@@ -36,7 +36,7 @@ typedef enum {
 Trigger trigger;
 
 static unsigned int capture;
-unsigned char distance;
+static unsigned char distance;
 
 void CompleteCapture(unsigned int instant);
 
@@ -153,7 +153,7 @@ void interrupt interruptions()
     }
 	
 	// Interruptions si transmission I2C
-	 if (PIR1bits.SSP1IF) {
+  if (PIR1bits.SSP1IF) {
         i2cEsclave();
         //i2cRappelCommande(CompleteCapture);         //???
     }
@@ -171,8 +171,7 @@ void CompleteCapture(unsigned int instant) {
         }       
         
         distance = (capture / 13);
-        i2cExposeValeur(1, distance);       // Ajouté par Roland
-        
+        i2cExposeValeur(0, distance);       //       
         if (distance > 60){
             PORTAbits.RA3 = 1;
             PORTAbits.RA2 = 1;
@@ -183,6 +182,7 @@ void CompleteCapture(unsigned int instant) {
             PORTAbits.RA3 = 0;
             PORTAbits.RA2 = 0;
         }
+        
 }
 
 void main(void) {
@@ -190,6 +190,10 @@ void main(void) {
     initialisationHardware();
     i2cReinitialise();
     i2cEsclave();
-    i2cRappelCommande(CompleteCapture);     //???
-    while (1) ;
+    //i2cRappelCommande(CompleteCapture);             //???
+    
+    while (1){
+    
+    }
+    
 }

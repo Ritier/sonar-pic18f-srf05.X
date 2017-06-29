@@ -165,7 +165,7 @@ void i2cEsclave() {
             // État 3 - Opération de lecture, dernier octet reçu est une adresse:
             else {
                 adresse = convertitEnAdresseLocale(SSP1BUF);
-                SSP1BUF = i2cValeursExposees[adresse];
+                SSP1BUF = i2cValeursExposees[adresse];            //cette fonction est appelée
                 SSP1CON1bits.CKP = 1;
             }
         } else {
